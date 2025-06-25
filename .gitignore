@@ -2,3 +2,6 @@
 # pixi environments
 .pixi
 *.egg-info
+.vscode
+.ipynb_checkpoints/
+phidget_code_development.ipynb
