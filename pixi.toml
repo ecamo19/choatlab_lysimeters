@@ -1,11 +1,11 @@
 [project]
-authors = ["ecamo19 <erickcamo19@gmail.com>"]
+authors = ["ecamo19 <erickcamo19@gmail.com>", "choat lab"]
 channels = ["conda-forge"]
 description = "Add a short description here"
-name = "lysimeters_code"
-platforms = ["linux-64"]
+name = "HIE_lysimeters"
+platforms = ["win-64", "linux-64", "osx-arm64", "osx-64"]
 version = "0.1.0"
-
+requires-python = ">= 3.11"
 [tasks]
 
 [dependencies]
