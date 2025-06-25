@@ -2,7 +2,7 @@
 authors = ["ecamo19 <erickcamo19@gmail.com>", "Choat lab"]
 channels = ["conda-forge"]
 description = "Add a short description here"
-name = "HIE_lysimeters"
+name = "choat_lysimeters"
 platforms = ["linux-64", "osx-arm64", "osx-64"]
 version = "0.1.0"
 
