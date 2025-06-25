@@ -7,5 +7,9 @@ platforms = ["win-64", "linux-64", "osx-arm64", "osx-64"]
 version = "0.1.0"
 
 [dependencies]
-python = ">=3.13.5,<4"
+bash_kernel = ">=0.7.2,<0.10"
+pip = ">=24.3.1,<25"
+python = "==3.10.0"
+jupyter = ">=1.1.1,<2"
+jupyterlab = ">=4.4.3,<5"
 
