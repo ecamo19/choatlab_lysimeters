@@ -5,7 +5,7 @@ description = "Add a short description here"
 name = "HIE_lysimeters"
 platforms = ["win-64", "linux-64", "osx-arm64", "osx-64"]
 version = "0.1.0"
-requires-python = ">= 3.11"
-[tasks]
 
 [dependencies]
+python = ">=3.13.5,<4"
+
