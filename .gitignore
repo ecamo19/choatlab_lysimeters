@@ -5,3 +5,6 @@
 .vscode
 .ipynb_checkpoints/
 phidget_code_development.ipynb
+.sesskey
+phidgetlog.log
+__pycache__/

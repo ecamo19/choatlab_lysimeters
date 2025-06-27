@@ -16,10 +16,12 @@ bash = ">=5.2.37,<6"
 
 [pypi-dependencies]
 phidget22 = "*"  
+python-fasthtml = "*"
 
 [host-dependencies]
 python = "==3.10.0"
 
 [tasks]
 hello = { cmd = "echo hello"}
-test_dependencies =  { cmd = "python test_dependencies.py", cwd = "src"}
+app =  { cmd = "python app.py", cwd = "src"}
+test =  { cmd = "python test.py", cwd = "src"}
