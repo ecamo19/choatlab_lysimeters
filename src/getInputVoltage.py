@@ -16,17 +16,27 @@ for each_channel in range(4):
         ch.setChannel(each_channel)
         ch.open()
         ch.close()
-        #print(f"Closed channel {each_channel}")
     except:
         pass
 
 print("Cleanup complete")
 
 # Methods -----------------------------------------------------------------------
-# Declare any event handlers here. These will be called every time the associated event occurs.
+# Declare any event handlers here. These will be called every time the associated 
+# event occurs.
 
-def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio):
-	print("VoltageRatio [0]: " + str(voltageRatio))
+## Channel 0 methods ------------------------------------------------------------
+
+### Create file -----------------------------------------------------------------
+with open("example.txt", "w") as file:
+    	file.write("date_time, voltage\n")
+
+### Append data from channel 0 to file ------------------------------------------     
+def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
+    
+    # Append data
+    with open('example.txt', 'a') as file:
+    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
 
 def onVoltageRatioInput0_Attach(self):
 	print("Attach [0]!")
@@ -39,8 +49,11 @@ def onVoltageRatioInput0_Error(self, code, description):
 	print("Description [0]: " + str(description))
 	print("----------")
 
+## Channel 1 methods ------------------------------------------------------------
+
 def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
-	print("VoltageRatio [1]: " + str(voltageRatio))
+	pass
+ 	#print("VoltageRatio [1]: " + str(voltageRatio))
 
 def onVoltageRatioInput1_Attach(self):
 	print("Attach [1]!")
@@ -53,8 +66,11 @@ def onVoltageRatioInput1_Error(self, code, description):
 	print("Description [1]: " + str(description))
 	print("----------")
 
+## Channel 2 methods ------------------------------------------------------------
+
 def onVoltageRatioInput2_VoltageRatioChange(self, voltageRatio):
-	print("VoltageRatio [2]: " + str(voltageRatio))
+	pass
+ 	#print("VoltageRatio [2]: " + str(voltageRatio))
 
 def onVoltageRatioInput2_Attach(self):
 	print("Attach [2]!")
@@ -67,8 +83,11 @@ def onVoltageRatioInput2_Error(self, code, description):
 	print("Description [2]: " + str(description))
 	print("----------")
 
+## Channel 2 methods ------------------------------------------------------------
+
 def onVoltageRatioInput3_VoltageRatioChange(self, voltageRatio):
-	print("VoltageRatio [3]: " + str(voltageRatio))
+	pass
+ 	#print("VoltageRatio [3]: " + str(voltageRatio))
 
 def onVoltageRatioInput3_Attach(self):
 	print("Attach [3]!")
@@ -81,6 +100,7 @@ def onVoltageRatioInput3_Error(self, code, description):
 	print("Description [3]: " + str(description))
 	print("----------")
 
+# Main method -------------------------------------------------------------------
 def main():
 	try:
         # Log errors and warnings
