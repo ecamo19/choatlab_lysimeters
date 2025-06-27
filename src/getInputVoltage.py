@@ -1,9 +1,12 @@
+# Code from phidget web page ----------------------------------------------------
+# https://www.phidgets.com/?prodid=1270#Tab_Code_Samples
+
+# Load dependecies --------------------------------------------------------------
 from Phidget22.Phidget import *
 from Phidget22.Devices.Log import *
 from Phidget22.LogLevel import *
 from Phidget22.Devices.VoltageRatioInput import *
 import time
-
 
 # Close any existing connections before running the code ------------------------
 # Try all 4 channels
