@@ -23,7 +23,7 @@ for each_channel in range(4):
 print("Cleanup complete")
 
 # Methods -----------------------------------------------------------------------
-#Declare any event handlers here. These will be called every time the associated event occurs.
+# Declare any event handlers here. These will be called every time the associated event occurs.
 
 def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio):
 	print("VoltageRatio [0]: " + str(voltageRatio))
