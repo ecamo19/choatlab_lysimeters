@@ -12,10 +12,10 @@ import time
 # Try all 4 channels
 for each_channel in range(4):  
     try:
-        ch = VoltageRatioInput()
-        ch.setChannel(each_channel)
-        ch.open()
-        ch.close()
+        channel = VoltageRatioInput()
+        channel.setChannel(each_channel)
+        channel.open()
+        channel.close()
     except:
         pass
 
