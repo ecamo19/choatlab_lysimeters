@@ -8,3 +8,4 @@ phidget_code_development.ipynb
 .sesskey
 phidgetlog.log
 __pycache__/
+*.txt
