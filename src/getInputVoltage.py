@@ -27,10 +27,12 @@ print("Cleanup complete")
 # event occurs.
 
 ## Get Phidget device serial number ---------------------------------------------
-def getSerialNumber(self):
+def getSerialNumber():
+	bridge_input = VoltageRatioInput()
 	try:
 		# Open the device (this will connect to the first available bridge input)
-		bridge_input.openWaitForAttachment(5000)  # Wait up to 5 seconds for attachment
+		# Wait up to 5 seconds for attachment
+		bridge_input.openWaitForAttachment(5000)  
     
 		# Get the serial number
 		serial_number =  bridge_input.getDeviceSerialNumber()
@@ -45,14 +47,16 @@ def getSerialNumber(self):
 	return serial_number
     
 ## Create folder to store data --------------------------------------------------
-if not os.path.exists("../data"):
-    os.mkdir("../data")
+serial_number = getSerialNumber()
+
+if not os.path.exists(f"../{serial_number}_data"):
+    os.mkdir(f"../{serial_number}_data")
 else:
-    print("Directory data already exists.")
+    print(f"Directory ../{serial_number}_data already exists.")
 
 ## Create files to store data ---------------------------------------------------
 for each_file in range(4):
-	with open(f"../data/channel_{each_file}_data.txt", "w") as file:
+	with open(f"../{serial_number}_data/{serial_number}_channel_{each_file}_data.txt", "w") as file:
     		file.write("date_time, voltage\n")
 
 ## Channel 0 methods ------------------------------------------------------------
@@ -61,7 +65,7 @@ for each_file in range(4):
 def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
     
     # Append data
-    with open('../data/channel_0_data.txt', 'a') as file:
+    with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
     	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
 
 ### Handle errors ---------------------------------------------------------------
@@ -74,7 +78,7 @@ def onVoltageRatioInput0_Error(self, code, description):
 def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
 	
  	# Append data
-    with open('../data/channel_1_data.txt', 'a') as file:
+    with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
     	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
 
 ### Handle errors ---------------------------------------------------------------
@@ -117,16 +121,16 @@ def main():
 		voltageRatioInput3 = VoltageRatioInput()
 
 		# 2) Set addressing parameters to specify which channel to open (if any)
-		voltageRatioInput0.setDeviceSerialNumber(716364)
+		voltageRatioInput0.setDeviceSerialNumber(serial_number)
 		voltageRatioInput0.setChannel(0)
   
-		voltageRatioInput1.setDeviceSerialNumber(716364)
+		voltageRatioInput1.setDeviceSerialNumber(serial_number)
 		voltageRatioInput1.setChannel(1)
   
-		voltageRatioInput2.setDeviceSerialNumber(716364)
+		voltageRatioInput2.setDeviceSerialNumber(serial_number)
 		voltageRatioInput2.setChannel(2)
   
-		voltageRatioInput3.setDeviceSerialNumber(716364)
+		voltageRatioInput3.setDeviceSerialNumber(serial_number)
 		voltageRatioInput3.setChannel(3)
 
 		# 3) Assign any event handlers you need before calling open so that no events are missed.
@@ -142,26 +146,27 @@ def main():
 		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioInput3_VoltageRatioChange)
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
-		# 4) Open your Phidgets and wait for attachment
-		voltageRatioInput0.openWaitForAttachment(5000)
-		voltageRatioInput1.openWaitForAttachment(5000)
-		voltageRatioInput2.openWaitForAttachment(5000)
-		voltageRatioInput3.openWaitForAttachment(5000)
+		# 4) Open your Phidgets and wait 7 seconds for attachment
+		voltageRatioInput0.openWaitForAttachment(7000)
+		voltageRatioInput1.openWaitForAttachment(7000)
+		voltageRatioInput2.openWaitForAttachment(7000)
+		voltageRatioInput3.openWaitForAttachment(7000)
 
 		# Interact with your Phidgets here or in your event handlers.
 		try:
-			input("Press Enter to Stop\n")
+			input("\nPress Enter to Stop\n")
 		except (Exception, KeyboardInterrupt):
 			pass
 
-		# 5)Close your Phidgets once the program is done.
+		# 5) Close your Phidgets once the program is done.
 		voltageRatioInput0.close()
 		voltageRatioInput1.close()
 		voltageRatioInput2.close()
 		voltageRatioInput3.close()
 
 	except PhidgetException as ex:
-		#We will catch Phidget Exceptions here, and print the error informaiton.
+     
+		# We will catch Phidget Exceptions here, and print the error informaiton.
 		traceback.print_exc()
 		print("")
 		print("PhidgetException " + str(ex.code) + " (" + ex.description + "): " + ex.details)
