@@ -85,7 +85,7 @@ def onVoltageRatioInput3_Error(self, code, description):
 # Main method -------------------------------------------------------------------
 def main():
 	try:
-        # Log errors and warnings
+        # 0) Log errors and warnings
 		Log.enable(LogLevel.PHIDGET_LOG_INFO, "phidgetlog.log")
   
 		# 1) Create your Phidget channels
@@ -120,20 +120,19 @@ def main():
 		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioInput3_VoltageRatioChange)
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
-		# Open your Phidgets and wait for attachment
+		# 4) Open your Phidgets and wait for attachment
 		voltageRatioInput0.openWaitForAttachment(5000)
 		voltageRatioInput1.openWaitForAttachment(5000)
 		voltageRatioInput2.openWaitForAttachment(5000)
 		voltageRatioInput3.openWaitForAttachment(5000)
 
-		#Interact with your Phidgets here or in your event handlers.
-
+		# Interact with your Phidgets here or in your event handlers.
 		try:
 			input("Press Enter to Stop\n")
 		except (Exception, KeyboardInterrupt):
 			pass
 
-		#Close your Phidgets once the program is done.
+		# 5)Close your Phidgets once the program is done.
 		voltageRatioInput0.close()
 		voltageRatioInput1.close()
 		voltageRatioInput2.close()
