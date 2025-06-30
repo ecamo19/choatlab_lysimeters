@@ -26,21 +26,36 @@ print("Cleanup complete")
 # Declare any event handlers here. These will be called every time the associated 
 # event occurs.
 
+## Get Phidget device serial number ---------------------------------------------
+def getSerialNumber(self):
+	try:
+		# Open the device (this will connect to the first available bridge input)
+		bridge_input.openWaitForAttachment(5000)  # Wait up to 5 seconds for attachment
+    
+		# Get the serial number
+		serial_number =  bridge_input.getDeviceSerialNumber()
+	
+	except PhidgetException as e:
+		print(f"Phidget Exception: {e.details}")
+    
+	finally:
+		# Always close the device when done
+		bridge_input.close()
+    
+	return serial_number
+    
 ## Create folder to store data --------------------------------------------------
 if not os.path.exists("../data"):
     os.mkdir("../data")
 else:
     print("Directory data already exists.")
 
-## Channel 0 methods ------------------------------------------------------------
-
-### Create files ----------------------------------------------------------------
-#for each_file in range(4):
-#	print(f'"../data/channel_{each_file}_data.txt"')
-
+## Create files to store data ---------------------------------------------------
 for each_file in range(4):
 	with open(f"../data/channel_{each_file}_data.txt", "w") as file:
     		file.write("date_time, voltage\n")
+
+## Channel 0 methods ------------------------------------------------------------
 
 ### Append data from channel 0 to file ------------------------------------------     
 def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
@@ -57,8 +72,10 @@ def onVoltageRatioInput0_Error(self, code, description):
 
 ## Channel 1 methods ------------------------------------------------------------
 def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
-	pass
- 	#print("VoltageRatio [1]: " + str(voltageRatio))
+	
+ 	# Append data
+    with open('../data/channel_1_data.txt', 'a') as file:
+    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput1_Error(self, code, description):
