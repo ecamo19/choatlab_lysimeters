@@ -18,6 +18,7 @@ time = ">=1.9,<2"
 [pypi-dependencies]
 phidget22 = "*"  
 python-fasthtml = "*"
+os-sys = "*"
 
 [host-dependencies]
 python = "==3.10.0"
