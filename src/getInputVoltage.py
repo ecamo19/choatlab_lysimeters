@@ -30,13 +30,17 @@ print("Cleanup complete")
 if not os.path.exists("../data"):
     os.mkdir("../data")
 else:
-    print("Directory already exists.")
+    print("Directory data already exists.")
 
 ## Channel 0 methods ------------------------------------------------------------
 
-### Create file -----------------------------------------------------------------
-with open("../data/channel_0_data.txt", "w") as file:
-    	file.write("date_time, voltage\n")
+### Create files ----------------------------------------------------------------
+#for each_file in range(4):
+#	print(f'"../data/channel_{each_file}_data.txt"')
+
+for each_file in range(4):
+	with open(f"../data/channel_{each_file}_data.txt", "w") as file:
+    		file.write("date_time, voltage\n")
 
 ### Append data from channel 0 to file ------------------------------------------     
 def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
@@ -45,38 +49,39 @@ def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio):
     with open('../data/channel_0_data.txt', 'a') as file:
     	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
 
+### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput0_Error(self, code, description):
 	print("Code [0]: " + ErrorEventCode.getName(code))
 	print("Description [0]: " + str(description))
 	print("----------")
 
 ## Channel 1 methods ------------------------------------------------------------
-
 def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
 	pass
  	#print("VoltageRatio [1]: " + str(voltageRatio))
 
+### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput1_Error(self, code, description):
 	print("Code [1]: " + ErrorEventCode.getName(code))
 	print("Description [1]: " + str(description))
 	print("----------")
 
 ## Channel 2 methods ------------------------------------------------------------
-
 def onVoltageRatioInput2_VoltageRatioChange(self, voltageRatio):
 	pass
  	#print("VoltageRatio [2]: " + str(voltageRatio))
-
+  
+### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput2_Error(self, code, description):
 	print("Code [2]: " + ErrorEventCode.getName(code))
 	print("Description [2]: " + str(description))
 	print("----------")
 
-## Channel 2 methods ------------------------------------------------------------
-
+## Channel 3 methods ------------------------------------------------------------
 def onVoltageRatioInput3_VoltageRatioChange(self, voltageRatio):
 	pass
 
+### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput3_Error(self, code, description):
 	print("Code [3]: " + ErrorEventCode.getName(code))
 	print("Description [3]: " + str(description))
