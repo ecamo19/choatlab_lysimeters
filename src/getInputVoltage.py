@@ -7,6 +7,7 @@ from Phidget22.Devices.Log import *
 from Phidget22.LogLevel import *
 from Phidget22.Devices.VoltageRatioInput import *
 import time
+import os
 
 # Close any existing connections before running the code ------------------------
 # Try all 4 channels
@@ -25,24 +26,24 @@ print("Cleanup complete")
 # Declare any event handlers here. These will be called every time the associated 
 # event occurs.
 
+## Create folder to store data --------------------------------------------------
+if not os.path.exists("../data"):
+    os.mkdir("../data")
+else:
+    print("Directory already exists.")
+
 ## Channel 0 methods ------------------------------------------------------------
 
 ### Create file -----------------------------------------------------------------
-with open("example.txt", "w") as file:
+with open("../data/channel_0_data.txt", "w") as file:
     	file.write("date_time, voltage\n")
 
 ### Append data from channel 0 to file ------------------------------------------     
 def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
     
     # Append data
-    with open('example.txt', 'a') as file:
+    with open('../data/channel_0_data.txt', 'a') as file:
     	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
-
-def onVoltageRatioInput0_Attach(self):
-	print("Attach [0]!")
-
-def onVoltageRatioInput0_Detach(self):
-	print("Detach [0]!")
 
 def onVoltageRatioInput0_Error(self, code, description):
 	print("Code [0]: " + ErrorEventCode.getName(code))
@@ -55,12 +56,6 @@ def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
 	pass
  	#print("VoltageRatio [1]: " + str(voltageRatio))
 
-def onVoltageRatioInput1_Attach(self):
-	print("Attach [1]!")
-
-def onVoltageRatioInput1_Detach(self):
-	print("Detach [1]!")
-
 def onVoltageRatioInput1_Error(self, code, description):
 	print("Code [1]: " + ErrorEventCode.getName(code))
 	print("Description [1]: " + str(description))
@@ -72,12 +67,6 @@ def onVoltageRatioInput2_VoltageRatioChange(self, voltageRatio):
 	pass
  	#print("VoltageRatio [2]: " + str(voltageRatio))
 
-def onVoltageRatioInput2_Attach(self):
-	print("Attach [2]!")
-
-def onVoltageRatioInput2_Detach(self):
-	print("Detach [2]!")
-
 def onVoltageRatioInput2_Error(self, code, description):
 	print("Code [2]: " + ErrorEventCode.getName(code))
 	print("Description [2]: " + str(description))
@@ -87,13 +76,6 @@ def onVoltageRatioInput2_Error(self, code, description):
 
 def onVoltageRatioInput3_VoltageRatioChange(self, voltageRatio):
 	pass
- 	#print("VoltageRatio [3]: " + str(voltageRatio))
-
-def onVoltageRatioInput3_Attach(self):
-	print("Attach [3]!")
-
-def onVoltageRatioInput3_Detach(self):
-	print("Detach [3]!")
 
 def onVoltageRatioInput3_Error(self, code, description):
 	print("Code [3]: " + ErrorEventCode.getName(code))
@@ -127,23 +109,15 @@ def main():
 
 		# 3) Assign any event handlers you need before calling open so that no events are missed.
 		voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioInput0_VoltageRatioChange)
-		voltageRatioInput0.setOnAttachHandler(onVoltageRatioInput0_Attach)
-		voltageRatioInput0.setOnDetachHandler(onVoltageRatioInput0_Detach)
 		voltageRatioInput0.setOnErrorHandler(onVoltageRatioInput0_Error)
   
 		voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioInput1_VoltageRatioChange)
-		voltageRatioInput1.setOnAttachHandler(onVoltageRatioInput1_Attach)
-		voltageRatioInput1.setOnDetachHandler(onVoltageRatioInput1_Detach)
 		voltageRatioInput1.setOnErrorHandler(onVoltageRatioInput1_Error)
   
 		voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioInput2_VoltageRatioChange)
-		voltageRatioInput2.setOnAttachHandler(onVoltageRatioInput2_Attach)
-		voltageRatioInput2.setOnDetachHandler(onVoltageRatioInput2_Detach)
 		voltageRatioInput2.setOnErrorHandler(onVoltageRatioInput2_Error)
   
 		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioInput3_VoltageRatioChange)
-		voltageRatioInput3.setOnAttachHandler(onVoltageRatioInput3_Attach)
-		voltageRatioInput3.setOnDetachHandler(onVoltageRatioInput3_Detach)
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
 		# Open your Phidgets and wait for attachment
