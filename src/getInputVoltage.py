@@ -9,17 +9,19 @@ from Phidget22.LogLevel import *
 from Phidget22.Devices.VoltageRatioInput import *
 import time
 
+
+# Phidget values ----------------------------------------------------------------
+
+# Insert your gain value from the Phidget Control Panel
+gain = 0
+
+# The offset is calculated in tareScale
+offset = 0
+
+calibrated = False
+
 # Methods -----------------------------------------------------------------------
 
-## Measure weights --------------------------------------------------------------s
-def onVoltageRatioChange(self, voltageRatio):
-    if(calibrated):
-        
-        #Apply the calibration parameters (gain, offset) to the raw voltage ratio
-        weight = (voltageRatio - offset) * gain        
-        
-        print("Weight: " + str(weight))
-    
 ## Tare scale -------------------------------------------------------------------
 def tareScale(ch):    
     global offset, calibrated
@@ -58,11 +60,14 @@ serial_number = getSerialNumber()
 ## Channel 0 methods ------------------------------------------------------------
 
 ### Append data from channel 0 to file ------------------------------------------     
-def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
-
-    # Append data
-    with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
-    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
+def onVoltageRatioChange_0(self, voltageRatio):
+    
+    if(calibrated):
+        
+        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
+        weight_0 = (voltageRatio - offset) * gain
+        with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
+            file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_0}\n")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput0_Error(self, code, description):
@@ -71,11 +76,13 @@ def onVoltageRatioInput0_Error(self, code, description):
 	print("----------\n")
 
 ## Channel 1 methods ------------------------------------------------------------
-def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
-
- 	# Append data
-    with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
-    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
+def onVoltageRatioChange_1(self, voltageRatio):
+    if(calibrated):
+        
+        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
+        weight_1 = (voltageRatio - offset) * gain
+        with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
+            file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_1}\n")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput1_Error(self, code, description):
@@ -84,12 +91,15 @@ def onVoltageRatioInput1_Error(self, code, description):
 	print("----------\n")
 
 ## Channel 2 methods ------------------------------------------------------------
-def onVoltageRatioInput2_VoltageRatioChange(self, voltageRatio):
-	
- 	# Append data
-    with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
-    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
-	
+def onVoltageRatioChange_2(self, voltageRatio):
+    if(calibrated):
+        
+        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
+        weight_2 = (voltageRatio - offset) * gain
+        
+        # Append data
+        with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
+            file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_2}\n")
  
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput2_Error(self, code, description):
@@ -98,15 +108,18 @@ def onVoltageRatioInput2_Error(self, code, description):
 	print("----------\n")
 
 ## Channel 3 methods ------------------------------------------------------------
-def onVoltageRatioInput3_VoltageRatioChange(self, voltageRatio):
-	
- 	# Append data
-    with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
-    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
-	
+def onVoltageRatioChange_3(self, voltageRatio):
+    if(calibrated):
+        
+        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
+        weight_3 = (voltageRatio - offset) * gain
+        
+        # Append data
+        with open(f'../{serial_number}_data/{serial_number}_channel_3_data.txt', 'a') as file:
+            file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_3}\n")
+
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput3_Error(self, code, description):
 	print("Code [3]: " + ErrorEventCode.getName(code))
 	print("Description [3]: " + str(description))
 	print("----------\n")
-

@@ -33,7 +33,7 @@ else:
 ## Create files to store data ---------------------------------------------------
 for each_file in range(4):
 	with open(f"../{serial_number}_data/{serial_number}_channel_{each_file}_data.txt", "w") as file:
-    		file.write("date_time, voltage\n")
+    		file.write("date_time, weight\n")
 
 # Main method -------------------------------------------------------------------
 def main():
@@ -62,16 +62,16 @@ def main():
 		voltageRatioInput3.setChannel(3)
 
 		# 3) Assign any event handlers you need before calling open so that no events are missed.
-		voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioInput0_VoltageRatioChange)
+		voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
 		voltageRatioInput0.setOnErrorHandler(onVoltageRatioInput0_Error)
 
-		voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioInput1_VoltageRatioChange)
+		voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioChange_1)
 		voltageRatioInput1.setOnErrorHandler(onVoltageRatioInput1_Error)
 
-		voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioInput2_VoltageRatioChange)
+		voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
 		voltageRatioInput2.setOnErrorHandler(onVoltageRatioInput2_Error)
 
-		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioInput3_VoltageRatioChange)
+		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioChange_3)
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
 		# 4) Open your Phidgets and wait 7 seconds for attachment
