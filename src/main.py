@@ -22,7 +22,7 @@ for each_channel in range(4):
 
 print("Cleanup complete")
 
-# Create folder to store data --------------------------------------------------
+# Create folder to store data ---------------------------------------------------
 serial_number = getSerialNumber()
 
 if not os.path.exists(f"../{serial_number}_data"):
@@ -81,7 +81,7 @@ def main():
 
 		# Interact with your Phidgets here or in your event handlers.
 		try:
-			input("\nPress Enter to Stop\n")
+			input("\n Press Enter to Stop \n")
 		except (Exception, KeyboardInterrupt):
 			pass
 

@@ -1,5 +1,6 @@
 # Code from phidget web page ----------------------------------------------------
 # https://www.phidgets.com/?prodid=1270#Tab_Code_Samples
+# https://www.phidgets.com/docs/Calibrating_Load_Cells
 
 # Load dependecies --------------------------------------------------------------
 from Phidget22.Phidget import *
@@ -7,11 +8,29 @@ from Phidget22.Devices.Log import *
 from Phidget22.LogLevel import *
 from Phidget22.Devices.VoltageRatioInput import *
 import time
-import os
 
 # Methods -----------------------------------------------------------------------
-# Declare any event handlers here. These will be called every time the associated 
-# event occurs.
+
+## Measure weights --------------------------------------------------------------s
+def onVoltageRatioChange(self, voltageRatio):
+    if(calibrated):
+        
+        #Apply the calibration parameters (gain, offset) to the raw voltage ratio
+        weight = (voltageRatio - offset) * gain        
+        
+        print("Weight: " + str(weight))
+    
+## Tare scale -------------------------------------------------------------------
+def tareScale(ch):    
+    global offset, calibrated
+    num_samples = 16
+
+    for i in range(num_samples):
+        offset += ch.getVoltageRatio()
+        time.sleep(ch.getDataInterval()/1000.0)
+        
+    offset /= num_samples
+    calibrated = True    
 
 ## Get Phidget device serial number ---------------------------------------------
 def getSerialNumber():
@@ -39,7 +58,7 @@ serial_number = getSerialNumber()
 ## Channel 0 methods ------------------------------------------------------------
 
 ### Append data from channel 0 to file ------------------------------------------     
-def onVoltageRatioInput0_VoltageRatioChange(self,voltageRatio): 
+def onVoltageRatioInput0_VoltageRatioChange(self, voltageRatio): 
 
     # Append data
     with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
@@ -49,7 +68,7 @@ def onVoltageRatioInput0_VoltageRatioChange(self,voltageRatio):
 def onVoltageRatioInput0_Error(self, code, description):
 	print("Code [0]: " + ErrorEventCode.getName(code))
 	print("Description [0]: " + str(description))
-	print("----------")
+	print("----------\n")
 
 ## Channel 1 methods ------------------------------------------------------------
 def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
@@ -62,26 +81,32 @@ def onVoltageRatioInput1_VoltageRatioChange(self, voltageRatio):
 def onVoltageRatioInput1_Error(self, code, description):
 	print("Code [1]: " + ErrorEventCode.getName(code))
 	print("Description [1]: " + str(description))
-	print("----------")
+	print("----------\n")
 
 ## Channel 2 methods ------------------------------------------------------------
 def onVoltageRatioInput2_VoltageRatioChange(self, voltageRatio):
-	pass
- 	#print("VoltageRatio [2]: " + str(voltageRatio))
-
+	
+ 	# Append data
+    with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
+    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
+	
+ 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput2_Error(self, code, description):
 	print("Code [2]: " + ErrorEventCode.getName(code))
 	print("Description [2]: " + str(description))
-	print("----------")
+	print("----------\n")
 
 ## Channel 3 methods ------------------------------------------------------------
 def onVoltageRatioInput3_VoltageRatioChange(self, voltageRatio):
-	pass
-
+	
+ 	# Append data
+    with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
+    	file.write(f"{time.strftime('%D %H:%M:%S')}, {voltageRatio}\n")
+	
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput3_Error(self, code, description):
 	print("Code [3]: " + ErrorEventCode.getName(code))
 	print("Description [3]: " + str(description))
-	print("----------")
+	print("----------\n")
 
