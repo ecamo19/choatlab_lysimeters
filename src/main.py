@@ -37,6 +37,7 @@ for each_file in range(4):
 
 # Main method -------------------------------------------------------------------
 def main():
+
 	try:
         # 0) Log errors and warnings
 		Log.enable(LogLevel.PHIDGET_LOG_INFO, "phidgetlog.log")
@@ -74,11 +75,17 @@ def main():
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
 		# 4) Open your Phidgets and wait 7 seconds for attachment
-		voltageRatioInput0.openWaitForAttachment(7000)
-		voltageRatioInput1.openWaitForAttachment(7000)
-		voltageRatioInput2.openWaitForAttachment(7000)
-		voltageRatioInput3.openWaitForAttachment(7000)
+		voltageRatioInput0.openWaitForAttachment(5000)
+		voltageRatioInput1.openWaitForAttachment(5000)
+		voltageRatioInput2.openWaitForAttachment(5000)
+		voltageRatioInput3.openWaitForAttachment(5000)
 
+		# Collect data every second (1s)
+		voltageRatioInput0.setDataInterval(1000)
+		voltageRatioInput1.setDataInterval(1000)
+		voltageRatioInput2.setDataInterval(1000)
+		voltageRatioInput3.setDataInterval(1000)
+		
 		# Interact with your Phidgets here or in your event handlers.
 		try:
 			input("\n Press Enter to Stop \n")
@@ -95,7 +102,6 @@ def main():
      
 		# We will catch Phidget Exceptions here, and print the error informaiton.
 		traceback.print_exc()
-		print("")
 		print("PhidgetException " + str(ex.code) + " (" + ex.description + "): " + ex.details)
 
 # Idiom to run main as a script -------------------------------------------------
