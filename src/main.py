@@ -30,7 +30,6 @@ if not os.path.exists(f"../{serial_number}_data"):
 else:
     print(f"Directory ../{serial_number}_data already exists.")
 
-
 ## Create files to store data ---------------------------------------------------
 for each_file in range(4):
 	with open(f"../{serial_number}_data/{serial_number}_channel_{each_file}_data.txt", "w") as file:
@@ -102,5 +101,3 @@ def main():
 # Idiom to run main as a script -------------------------------------------------
 if __name__ == "__main__":
     main()
-    
-    
