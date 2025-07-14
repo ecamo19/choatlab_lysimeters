@@ -6,7 +6,7 @@ from Phidget22.Devices.VoltageRatioInput import *
 import time
 import os
 
-## Call functions
+## Call functions from getInputVoltage
 from getInputVoltage import *
 
 # Close any existing connections before running the code ------------------------
