@@ -9,14 +9,13 @@ from Phidget22.LogLevel import *
 from Phidget22.Devices.VoltageRatioInput import *
 import time
 
-
 # Phidget values ----------------------------------------------------------------
 
 # Insert your gain value from the Phidget Control Panel
 gain = 0
 
 # The offset is calculated in tareScale
-offset = 0
+#offset = 0
 
 calibrated = False
 
@@ -24,16 +23,22 @@ calibrated = False
 
 ## Tare scale -------------------------------------------------------------------
 def tareScale(ch):    
-    global offset, calibrated
+    global calibrated
     num_samples = 16
-
+    
+    offset_name = f'offset_{ch}'
+    print(f'Taring {offset_name}')
+    
+     # Initialize the global variable
+    globals()[offset_name] = 0 
+    
     for i in range(num_samples):
-        offset += ch.getVoltageRatio()
+        globals()[offset_name] += ch.getVoltageRatio()
         time.sleep(ch.getDataInterval()/1000.0)
         
-    offset /= num_samples
-    calibrated = True    
-
+    globals()[offset_name] /= num_samples
+    calibrated = True
+ 
 ## Get Phidget device serial number ---------------------------------------------
 def getSerialNumber():
 	bridge_input = VoltageRatioInput()
@@ -68,6 +73,8 @@ def onVoltageRatioChange_0(self, voltageRatio):
         weight_0 = (voltageRatio - offset) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_0}\n")
+    else:
+        raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput0_Error(self, code, description):
@@ -83,6 +90,8 @@ def onVoltageRatioChange_1(self, voltageRatio):
         weight_1 = (voltageRatio - offset) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_1}\n")
+    else:
+        raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput1_Error(self, code, description):
@@ -100,7 +109,9 @@ def onVoltageRatioChange_2(self, voltageRatio):
         # Append data
         with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_2}\n")
- 
+    else:
+        raise ValueError(f"calibrated flag is {calibrated}")
+
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput2_Error(self, code, description):
 	print("Code [2]: " + ErrorEventCode.getName(code))
@@ -109,14 +120,16 @@ def onVoltageRatioInput2_Error(self, code, description):
 
 ## Channel 3 methods ------------------------------------------------------------
 def onVoltageRatioChange_3(self, voltageRatio):
-    if(calibrated):
-        
-        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
-        weight_3 = (voltageRatio - offset) * gain
-        
-        # Append data
-        with open(f'../{serial_number}_data/{serial_number}_channel_3_data.txt', 'a') as file:
-            file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_3}\n")
+		if(calibrated):
+		
+		    # Apply the calibration parameters (gain, offset) to the raw voltage ratio
+		    weight_3 = (voltageRatio - offset) * gain
+		
+		    # Append data
+		    with open(f'../{serial_number}_data/{serial_number}_channel_3_data.txt', 'a') as file:
+		        file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_3}\n")
+		else:
+		    raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput3_Error(self, code, description):

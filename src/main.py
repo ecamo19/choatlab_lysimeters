@@ -61,30 +61,57 @@ def main():
 		voltageRatioInput3.setDeviceSerialNumber(serial_number)
 		voltageRatioInput3.setChannel(3)
 
-		# 3) Assign any event handlers you need before calling open so that no events are missed.
-		voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
+		# 3) Assign any event handlers you need before calling open so that no 
+  		# events are missed.
+		try:
+			voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
+		except ValueError as e:
+			print(e)
+
 		voltageRatioInput0.setOnErrorHandler(onVoltageRatioInput0_Error)
 
-		voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioChange_1)
+		try:
+			voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioChange_1)
+		except ValueError as e:
+			print(e)
+
 		voltageRatioInput1.setOnErrorHandler(onVoltageRatioInput1_Error)
 
-		voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
+		try:
+			voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
+		except ValueError as e:
+			print(e)
+
 		voltageRatioInput2.setOnErrorHandler(onVoltageRatioInput2_Error)
 
-		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioChange_3)
+		try:
+			voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioChange_3)
+		except ValueError as e:
+			print(e)
+
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
-		# 4) Open your Phidgets and wait 7 seconds for attachment
-		voltageRatioInput0.openWaitForAttachment(5000)
-		voltageRatioInput1.openWaitForAttachment(5000)
-		voltageRatioInput2.openWaitForAttachment(5000)
-		voltageRatioInput3.openWaitForAttachment(5000)
+		# 4) Open your Phidgets and wait 9 seconds for attachment
+		voltageRatioInput0.openWaitForAttachment(9000)
+		voltageRatioInput1.openWaitForAttachment(9000)
+		voltageRatioInput2.openWaitForAttachment(9000)
+		voltageRatioInput3.openWaitForAttachment(9000)
 
-		# Collect data every second (1s)
+		# Set data collection interval to 1ss
 		voltageRatioInput0.setDataInterval(1000)
 		voltageRatioInput1.setDataInterval(1000)
 		voltageRatioInput2.setDataInterval(1000)
 		voltageRatioInput3.setDataInterval(1000)
+		
+		print("Remove any weight from the scale. 5 seconds")
+		time.sleep(5)
+		print(f'global variables available {globals()}')
+		
+		print("Taring started")
+		tareScale(voltageRatioInput0)
+		tareScale(voltageRatioInput1)
+		tareScale(voltageRatioInput2)
+		tareScale(voltageRatioInput3)
 		
 		# Interact with your Phidgets here or in your event handlers.
 		try:
