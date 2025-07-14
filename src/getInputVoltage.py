@@ -15,7 +15,7 @@ import time
 gain = 0
 
 # The offset is calculated in tareScale
-#offset = 0
+offset = 0
 
 calibrated = False
 
