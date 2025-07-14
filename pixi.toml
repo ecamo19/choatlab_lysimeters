@@ -19,11 +19,10 @@ time = ">=1.9,<2"
 phidget22 = "*"  
 python-fasthtml = "*"
 os-sys = "*"
-nbdev = ">=2.4.4,<3"
 
 [host-dependencies]
 python = "==3.10.0"
 
 [tasks]
 getInputVoltage = { cmd = "python getInputVoltage.py", cwd = "src"}
-app =  { cmd = "python app.py", cwd = "src"}
+main =  { cmd = "python main.py", cwd = "src"}

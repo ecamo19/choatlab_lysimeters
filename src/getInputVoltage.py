@@ -9,19 +9,6 @@ from Phidget22.Devices.VoltageRatioInput import *
 import time
 import os
 
-# Close any existing connections before running the code ------------------------
-# Try all 4 channels
-for each_channel in range(4):  
-    try:
-        channel = VoltageRatioInput()
-        channel.setChannel(each_channel)
-        channel.open()
-        channel.close()
-    except:
-        pass
-
-print("Cleanup complete")
-
 # Methods -----------------------------------------------------------------------
 # Declare any event handlers here. These will be called every time the associated 
 # event occurs.
