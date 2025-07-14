@@ -19,6 +19,7 @@ time = ">=1.9,<2"
 phidget22 = "*"  
 python-fasthtml = "*"
 os-sys = "*"
+nbdev = ">=2.4.4,<3"
 
 [host-dependencies]
 python = "==3.10.0"

@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "lysimeters_code"
+  site-url: "https://ecamo19.github.io/lysimeters_code"
+  description: "This project contains all the code for running the lysimeters at the Choat Lab"
+  repo-branch: main
+  repo-url: "https://github.com/ecamo19/lysimeters_code"
