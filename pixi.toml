@@ -25,6 +25,5 @@ os-sys = "*"
 python = "==3.10.0"
 
 [tasks]
-getInputVoltage = { cmd = "python getInputVoltage.py", cwd = "src"}
-main =  { cmd = "python main.py", cwd = "src"}
 balance_0 = { cmd = "python balance_0.py", cwd = "src"}
+balance_1 = { cmd = "python balance_1.py", cwd = "src"}
