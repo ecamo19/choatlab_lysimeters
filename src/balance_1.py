@@ -110,7 +110,7 @@ def balance_1_main():
 		pass
 
 	# 5) Close your Phidgets once the program is done.
-	voltageRatioInput0.close()
+	voltageRatioInput1.close()
 
 
 # Run main as a script ----------------------------------------------------------
