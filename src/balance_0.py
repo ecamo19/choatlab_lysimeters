@@ -1,3 +1,8 @@
+# Code from phidget web page ----------------------------------------------------
+# https://www.phidgets.com/?prodid=1270#Tab_Code_Samples
+# https://www.phidgets.com/docs/Calibrating_Load_Cells
+# https://www.phidgets.com/docs/KIT4007_User_Guide
+
 # Load dependecies --------------------------------------------------------------
 from Phidget22.Phidget import *
 from Phidget22.Devices.Log import *
