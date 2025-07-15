@@ -14,6 +14,7 @@ jupyter = ">=1.1.1,<2"
 jupyterlab = ">=4.4.3,<5"
 bash = ">=5.2.37,<6"
 time = ">=1.9,<2"
+ruff = ">=0.12.3,<0.13"
 
 [pypi-dependencies]
 phidget22 = "*"  
@@ -26,4 +27,4 @@ python = "==3.10.0"
 [tasks]
 getInputVoltage = { cmd = "python getInputVoltage.py", cwd = "src"}
 main =  { cmd = "python main.py", cwd = "src"}
-  
+balance_0 = { cmd = "python balance_0.py", cwd = "src"}
