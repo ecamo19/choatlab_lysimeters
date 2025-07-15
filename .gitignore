@@ -12,3 +12,4 @@ __pycache__/
 *.log
 *.ruff_cache
 ruff.toml
+*_data
