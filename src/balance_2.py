@@ -44,6 +44,13 @@ if not os.path.exists(f'../{serial_number}_data'):
 else:
 	print(f'Directory ../{serial_number}_data already exists.')
 
+## Create folder to store logs --------------------------------------------------
+if not os.path.exists(f'../{serial_number}_data/{serial_number}_logs'):
+	os.mkdir(f'../{serial_number}_data/{serial_number}_logs')
+
+else:
+	print(f'Directory for storing logs already exists.')
+
 # Create txt file for storing data from channel 2 -------------------------------
 with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'w') as file:
 	file.write('date_time, weight_grams\n')
