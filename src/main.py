@@ -11,36 +11,36 @@ from getInputVoltage import *
 
 # Close any existing connections before running the code ------------------------
 # Try all 4 channels
-for each_channel in range(4):  
-    try:
-        channel = VoltageRatioInput()
-        channel.setChannel(each_channel)
-        channel.open()
-        channel.close()
-    except:
-        pass
+for each_channel in range(4):
+	try:
+		channel = VoltageRatioInput()
+		channel.setChannel(each_channel)
+		channel.open()
+		channel.close()
+	except:
+		pass
 
-print("Cleanup complete")
+print('Cleanup complete')
 
 # Create folder to store data ---------------------------------------------------
 serial_number = getSerialNumber()
 
-if not os.path.exists(f"../{serial_number}_data"):
-    os.mkdir(f"../{serial_number}_data")
+if not os.path.exists(f'../{serial_number}_data'):
+	os.mkdir(f'../{serial_number}_data')
 else:
-    print(f"Directory ../{serial_number}_data already exists.")
+	print(f'Directory ../{serial_number}_data already exists.')
 
 ## Create files to store data ---------------------------------------------------
 for each_file in range(4):
-	with open(f"../{serial_number}_data/{serial_number}_channel_{each_file}_data.txt", "w") as file:
-    		file.write("date_time, weight\n")
+	with open(f'../{serial_number}_data/{serial_number}_channel_{each_file}_data.txt', 'w') as file:
+		file.write('date_time, weight\n')
+
 
 # Main method -------------------------------------------------------------------
 def main():
-
 	try:
-        # 0) Log errors and warnings
-		Log.enable(LogLevel.PHIDGET_LOG_INFO, "phidgetlog.log")
+		# 0) Log errors and warnings
+		Log.enable(LogLevel.PHIDGET_LOG_INFO, 'phidgetlog.log')
 
 		# 1) Create your Phidget channels
 		voltageRatioInput0 = VoltageRatioInput()
@@ -61,34 +61,19 @@ def main():
 		voltageRatioInput3.setDeviceSerialNumber(serial_number)
 		voltageRatioInput3.setChannel(3)
 
-		# 3) Assign any event handlers you need before calling open so that no 
-  		# events are missed.
-		try:
-			voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
-		except ValueError as e:
-			print(e)
+		# 3) Assign any event handlers you need before calling open so that no
+		# events are missed.
 
+		voltageRatioInput0.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
 		voltageRatioInput0.setOnErrorHandler(onVoltageRatioInput0_Error)
 
-		try:
-			voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioChange_1)
-		except ValueError as e:
-			print(e)
-
+		voltageRatioInput1.setOnVoltageRatioChangeHandler(onVoltageRatioChange_1)
 		voltageRatioInput1.setOnErrorHandler(onVoltageRatioInput1_Error)
 
-		try:
-			voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
-		except ValueError as e:
-			print(e)
-
+		voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
 		voltageRatioInput2.setOnErrorHandler(onVoltageRatioInput2_Error)
 
-		try:
-			voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioChange_3)
-		except ValueError as e:
-			print(e)
-
+		voltageRatioInput3.setOnVoltageRatioChangeHandler(onVoltageRatioChange_3)
 		voltageRatioInput3.setOnErrorHandler(onVoltageRatioInput3_Error)
 
 		# 4) Open your Phidgets and wait 9 seconds for attachment
@@ -97,25 +82,25 @@ def main():
 		voltageRatioInput2.openWaitForAttachment(9000)
 		voltageRatioInput3.openWaitForAttachment(9000)
 
-		# Set data collection interval to 1ss
+		# Set data collection interval to 1s
 		voltageRatioInput0.setDataInterval(1000)
 		voltageRatioInput1.setDataInterval(1000)
 		voltageRatioInput2.setDataInterval(1000)
 		voltageRatioInput3.setDataInterval(1000)
-		
-		print("Remove any weight from the scale. 5 seconds")
+
+		print('\nRemove any weight from the scale. 5 seconds\n')
 		time.sleep(5)
-		print(f'global variables available {globals()}')
-		
-		print("Taring started")
-		tareScale(voltageRatioInput0)
-		tareScale(voltageRatioInput1)
-		tareScale(voltageRatioInput2)
-		tareScale(voltageRatioInput3)
-		
+
+		print('Taring started')
+
+		tareScale(voltageRatioInput0, channel_number=0)
+		tareScale(voltageRatioInput1, channel_number=1)
+		tareScale(voltageRatioInput2, channel_number=2)
+		tareScale(voltageRatioInput3, channel_number=3)
+
 		# Interact with your Phidgets here or in your event handlers.
 		try:
-			input("\n Press Enter to Stop \n")
+			input('\n Press Enter to Stop \n')
 		except (Exception, KeyboardInterrupt):
 			pass
 
@@ -126,11 +111,11 @@ def main():
 		voltageRatioInput3.close()
 
 	except PhidgetException as ex:
-     
 		# We will catch Phidget Exceptions here, and print the error informaiton.
 		traceback.print_exc()
-		print("PhidgetException " + str(ex.code) + " (" + ex.description + "): " + ex.details)
+		print('PhidgetException ' + str(ex.code) + ' (' + ex.description + '): ' + ex.details)
+
 
 # Idiom to run main as a script -------------------------------------------------
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+	main()
