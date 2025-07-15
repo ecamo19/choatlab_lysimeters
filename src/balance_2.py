@@ -84,7 +84,7 @@ def balance_2_main():
 
 	try:
 		input(
-			'Clear the any weight over the scale connected to the channel 2 and then press Enter\n'
+			'Clear any weight over the scale connected to the channel 2 and then press Enter\n'
 		)
 	except (Exception, KeyboardInterrupt):
 		pass
