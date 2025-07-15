@@ -63,9 +63,9 @@ def balance_1_main():
 	global m
 	global b
 
-	# 0) Log errors and warnings
-	Log.enable(LogLevel.PHIDGET_LOG_INFO, 'phidgetlog_1.log')
-
+	# 0) Log errors and warningss
+	Log.enable(LogLevel.PHIDGET_LOG_INFO, f'../{serial_number}_data/{serial_number}_logs/phidgetlog_1.log')
+ 
 	# 1) Create your Phidget channels
 	voltageRatioInput1 = VoltageRatioInput()
 
