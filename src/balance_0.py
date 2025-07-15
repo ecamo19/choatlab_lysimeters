@@ -6,8 +6,8 @@ from Phidget22.Devices.VoltageRatioInput import *
 import time
 import os
 
-## Call functions from getInputVoltage
-from getInputVoltage import *
+## Call function from getSerialNumber
+from getSerialNumber import *
 
 
 # Set global values for linear calibration --------------------------------------
@@ -44,6 +44,7 @@ else:
 with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'w') as file:
 	file.write('date_time, weight_grams\n')
 
+
 # Main method -------------------------------------------------------------------
 def balance_0_main():
 	global calibrated
@@ -71,7 +72,9 @@ def balance_0_main():
 	voltageRatioInput0.setDataInterval(1000)
 
 	try:
-		input('Clear the any weight over the scale connected to the channel 0 and then press Enter\n')
+		input(
+			'Clear the any weight over the scale connected to the channel 0 and then press Enter\n'
+		)
 	except (Exception, KeyboardInterrupt):
 		pass
 
