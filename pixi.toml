@@ -27,3 +27,5 @@ python = "==3.10.0"
 [tasks]
 balance_0 = { cmd = "python balance_0.py", cwd = "src"}
 balance_1 = { cmd = "python balance_1.py", cwd = "src"}
+balance_2 = { cmd = "python balance_2.py", cwd = "src"}
+balance_3 = { cmd = "python balance_3.py", cwd = "src"}
