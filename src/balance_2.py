@@ -29,9 +29,8 @@ def onVoltageRatioChange_2(self, voltageRatio):
 
 		# Apply the calibration parameters (gain, offset) to the raw voltage
 		# ratio
-		weight_2 = round((m * voltageRatio) + b, 2)
 		with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
-			file.write(f'{time.strftime("%D %H:%M:%S")}, {weight_2}\n')
+			file.write(f'{time.strftime("%D %H:%M:%S")}, {round((m * voltageRatio) + b, 3)}\n')
 
 
 # Create folder to store data ---------------------------------------------------
@@ -68,7 +67,7 @@ def balance_2_main():
 
 	# 3) Assign any event handlers you need before calling open so that no
 	# events are missed.
-	voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_0)
+	voltageRatioInput2.setOnVoltageRatioChangeHandler(onVoltageRatioChange_2)
 
 	# 4) Open your Phidgets and wait 5 seconds for attachment
 	voltageRatioInput2.openWaitForAttachment(5000)
