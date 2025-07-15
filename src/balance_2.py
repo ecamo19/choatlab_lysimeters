@@ -63,8 +63,10 @@ def balance_2_main():
 	global b
 
 	# 0) Log errors and warningss
-	Log.enable(LogLevel.PHIDGET_LOG_INFO, f'../{serial_number}_data/{serial_number}_logs/phidgetlog_2.log')
-	
+	Log.enable(
+		LogLevel.PHIDGET_LOG_INFO, f'../{serial_number}_data/{serial_number}_logs/phidgetlog_2.log'
+	)
+
 	# 1) Create your Phidget channels
 	voltageRatioInput2 = VoltageRatioInput()
 
@@ -83,9 +85,7 @@ def balance_2_main():
 	voltageRatioInput2.setDataInterval(1000)
 
 	try:
-		input(
-			'Clear any weight over the scale connected to the channel 2 and then press Enter\n'
-		)
+		input('Clear any weight over the scale connected to the channel 2 and then press Enter\n')
 	except (Exception, KeyboardInterrupt):
 		pass
 
