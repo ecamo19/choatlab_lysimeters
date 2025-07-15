@@ -30,7 +30,7 @@ def onVoltageRatioChange_0(self, voltageRatio):
 		# Apply the calibration parameters (gain, offset) to the raw voltage
 		# ratio
 		with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
-			file.write(f'{time.strftime("%D %H:%M:%S")}, {round((m * voltageRatio) + b, 2)}\n')
+			file.write(f'{time.strftime("%D %H:%M:%S")}, {round((m * voltageRatio) + b, 3)}\n')
 
 
 # Create folder to store data ---------------------------------------------------
