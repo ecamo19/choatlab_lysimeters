@@ -15,7 +15,6 @@ def getSerialNumber():
 	bridge_input = VoltageRatioInput()
 	try:
 		# Open the device (this will connect to the first available bridge input)
-		bridge_input.openWaitForAttachment(5000)  # Wait up to 5 seconds for attachment
 		# Wait up to 5 seconds for attachment
 		bridge_input.openWaitForAttachment(5000)
 
