@@ -51,7 +51,7 @@ with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'w') as
 
 
 # Main method -------------------------------------------------------------------
-def balance_0_main():
+def balance_1_main():
 	global calibrated
 	global m
 	global b
@@ -116,4 +116,4 @@ def balance_0_main():
 
 # Run main as a script ----------------------------------------------------------
 if __name__ == '__main__':
-	balance_0_main()
+	balance_1_main()
