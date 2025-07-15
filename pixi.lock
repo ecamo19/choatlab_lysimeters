@@ -27,7 +27,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2025.7.14-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached-property-1.5.2-hd8ed1ab_1.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached_property-1.5.2-pyha770c72_1.tar.bz2
-      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.9-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.14-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/cffi-1.17.1-py310h8deb56e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/charset-normalizer-3.4.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/comm-0.2.2-pyhd8ed1ab_1.conda
@@ -181,7 +181,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d8/ab/142998b8c5dbde447dce675e147ffc296f949411639a025a81189b462274/os_sys-0.9.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/2c/95/79ab37aa4c25d1e7df953dde407bb9c3e4ae47d154bc0dd1692f3a6dcf8c/pandas-2.3.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/af/fb/4ed8872e0035d671e565f42bcc3335cd8133834ed0bc0c5b8106205439ff/phidget22-1.22.20250422-py3-none-manylinux_2_28_x86_64.whl
+      - pypi: https://files.pythonhosted.org/packages/f0/82/b4250c685e0ae4026c8aebb71a1f2ecb6126e504e1f1d8686c8224995bf2/phidget22-1.22.20250714-py3-none-manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/f0/16/1a6bf01fb622fb9cf5c91683823f073f053005c849b1f52ed613afcf8dae/pillow-11.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/42/59/123aee44a039b212cfb8d90be1adf06496a99b313ee1683aadf90b3d9799/progress-1.6.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a3/a6/b8e451f6cff1c99b4747a2f7235aa904d2d49e8e1464e0b798272aa84358/progressbar-2.5.tar.gz
@@ -216,7 +216,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2025.7.14-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached-property-1.5.2-hd8ed1ab_1.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached_property-1.5.2-pyha770c72_1.tar.bz2
-      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.9-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.14-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/cffi-1.17.1-py310hfce808e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/charset-normalizer-3.4.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/comm-0.2.2-pyhd8ed1ab_1.conda
@@ -363,7 +363,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d8/ab/142998b8c5dbde447dce675e147ffc296f949411639a025a81189b462274/os_sys-0.9.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/c4/ca/aa97b47287221fa37a49634532e520300088e290b20d690b21ce3e448143/pandas-2.3.1-cp310-cp310-macosx_10_9_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/e0/56/3940ecb60e2c1abf8c14274cad9a6ff7e3d1da72b17e3579317f0e71ae10/phidget22-1.22.20250422-py3-none-macosx_10_11_x86_64.whl
+      - pypi: https://files.pythonhosted.org/packages/66/aa/72188ebf26e842185f5db74f3831746951c0cb251d8e24e50ddcfb424739/phidget22-1.22.20250714-py3-none-macosx_10_11_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/4c/5d/45a3553a253ac8763f3561371432a90bdbe6000fbdcf1397ffe502aa206c/pillow-11.3.0-cp310-cp310-macosx_10_10_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/42/59/123aee44a039b212cfb8d90be1adf06496a99b313ee1683aadf90b3d9799/progress-1.6.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a3/a6/b8e451f6cff1c99b4747a2f7235aa904d2d49e8e1464e0b798272aa84358/progressbar-2.5.tar.gz
@@ -398,7 +398,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2025.7.14-hbd8a1cb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached-property-1.5.2-hd8ed1ab_1.tar.bz2
       - conda: https://conda.anaconda.org/conda-forge/noarch/cached_property-1.5.2-pyha770c72_1.tar.bz2
-      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.9-pyhd8ed1ab_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.14-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/cffi-1.17.1-py310h497396d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/charset-normalizer-3.4.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/comm-0.2.2-pyhd8ed1ab_1.conda
@@ -546,7 +546,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d8/ab/142998b8c5dbde447dce675e147ffc296f949411639a025a81189b462274/os_sys-0.9.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/80/bf/7938dddc5f01e18e573dcfb0f1b8c9357d9b5fa6ffdee6e605b92efbdff2/pandas-2.3.1-cp310-cp310-macosx_11_0_arm64.whl
-      - pypi: https://files.pythonhosted.org/packages/81/41/72d54d60b741beb857276e76dc009da6d2caaa52bacfee4cb7cceb0f4034/phidget22-1.22.20250422-py3-none-macosx_11_0_arm64.whl
+      - pypi: https://files.pythonhosted.org/packages/8e/05/b136b54127dc346a329ba10df8b678b177a8ded8f53c58f8ca3f5ef5cdc1/phidget22-1.22.20250714-py3-none-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/7c/c8/67c12ab069ef586a25a4a79ced553586748fad100c77c0ce59bb4983ac98/pillow-11.3.0-cp310-cp310-macosx_11_0_arm64.whl
       - pypi: https://files.pythonhosted.org/packages/42/59/123aee44a039b212cfb8d90be1adf06496a99b313ee1683aadf90b3d9799/progress-1.6.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/a3/a6/b8e451f6cff1c99b4747a2f7235aa904d2d49e8e1464e0b798272aa84358/progressbar-2.5.tar.gz
@@ -930,7 +930,7 @@ packages:
   license: MIT
   license_family: MIT
   purls:
-  - pkg:pypi/beautifulsoup4?source=compressed-mapping
+  - pkg:pypi/beautifulsoup4?source=hash-mapping
   size: 146613
   timestamp: 1744783307123
 - kind: conda
@@ -1147,20 +1147,20 @@ packages:
   timestamp: 1615209567874
 - kind: conda
   name: certifi
-  version: 2025.7.9
+  version: 2025.7.14
   build: pyhd8ed1ab_0
   subdir: noarch
   noarch: python
-  url: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.9-pyhd8ed1ab_0.conda
-  sha256: d5bcebb3748005b50479055b69bd6a19753219effcf921b9158ef3ff588c752b
-  md5: fac657ab965a05f69ba777a7b934255a
+  url: https://conda.anaconda.org/conda-forge/noarch/certifi-2025.7.14-pyhd8ed1ab_0.conda
+  sha256: f68ee5038f37620a4fb4cdd8329c9897dce80331db8c94c3ab264a26a8c70a08
+  md5: 4c07624f3faefd0bb6659fb7396cfa76
   depends:
   - python >=3.9
   license: ISC
   purls:
   - pkg:pypi/certifi?source=compressed-mapping
-  size: 156733
-  timestamp: 1752115379962
+  size: 159755
+  timestamp: 1752493370797
 - kind: conda
   name: cffi
   version: 1.17.1
@@ -3894,19 +3894,19 @@ packages:
   timestamp: 1733302019362
 - kind: pypi
   name: phidget22
-  version: 1.22.20250422
-  url: https://files.pythonhosted.org/packages/81/41/72d54d60b741beb857276e76dc009da6d2caaa52bacfee4cb7cceb0f4034/phidget22-1.22.20250422-py3-none-macosx_11_0_arm64.whl
-  sha256: 3804a1329da99895cf284f60340e3d74d33fae4afe88cb0b4ce95e88d5f3283b
+  version: 1.22.20250714
+  url: https://files.pythonhosted.org/packages/66/aa/72188ebf26e842185f5db74f3831746951c0cb251d8e24e50ddcfb424739/phidget22-1.22.20250714-py3-none-macosx_10_11_x86_64.whl
+  sha256: ac99604c01f523683c77fafb15c2ad27901bd03cc6c0b9d49f405bded389aa97
 - kind: pypi
   name: phidget22
-  version: 1.22.20250422
-  url: https://files.pythonhosted.org/packages/af/fb/4ed8872e0035d671e565f42bcc3335cd8133834ed0bc0c5b8106205439ff/phidget22-1.22.20250422-py3-none-manylinux_2_28_x86_64.whl
-  sha256: e9dd19cc0c0add89f719de6f662edee74dad282fe8bce74ba8f057ae73938798
+  version: 1.22.20250714
+  url: https://files.pythonhosted.org/packages/8e/05/b136b54127dc346a329ba10df8b678b177a8ded8f53c58f8ca3f5ef5cdc1/phidget22-1.22.20250714-py3-none-macosx_11_0_arm64.whl
+  sha256: 5141627b002db28c5fcdf33e80a5c1734dcae304d77d1ccb5619bce0d178d308
 - kind: pypi
   name: phidget22
-  version: 1.22.20250422
-  url: https://files.pythonhosted.org/packages/e0/56/3940ecb60e2c1abf8c14274cad9a6ff7e3d1da72b17e3579317f0e71ae10/phidget22-1.22.20250422-py3-none-macosx_10_11_x86_64.whl
-  sha256: f1576495cbf7613a7e028bbdbdb2948aea259befb31a28fcea2c0563cd320e0d
+  version: 1.22.20250714
+  url: https://files.pythonhosted.org/packages/f0/82/b4250c685e0ae4026c8aebb71a1f2ecb6126e504e1f1d8686c8224995bf2/phidget22-1.22.20250714-py3-none-manylinux_2_28_x86_64.whl
+  sha256: f89efce120e05fbf40e61d8d43a6bd43324273467be4f8acd5184ab931fedb21
 - kind: conda
   name: pickleshare
   version: 0.7.5
