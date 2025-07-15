@@ -73,8 +73,6 @@ def onVoltageRatioChange_0(self, voltageRatio):
         weight_0 = (voltageRatio - offset) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_0}\n")
-    else:
-        raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput0_Error(self, code, description):
@@ -90,8 +88,6 @@ def onVoltageRatioChange_1(self, voltageRatio):
         weight_1 = (voltageRatio - offset) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_1}\n")
-    else:
-        raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput1_Error(self, code, description):
@@ -109,8 +105,6 @@ def onVoltageRatioChange_2(self, voltageRatio):
         # Append data
         with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_2}\n")
-    else:
-        raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput2_Error(self, code, description):
@@ -128,8 +122,6 @@ def onVoltageRatioChange_3(self, voltageRatio):
 		    # Append data
 		    with open(f'../{serial_number}_data/{serial_number}_channel_3_data.txt', 'a') as file:
 		        file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_3}\n")
-		else:
-		    raise ValueError(f"calibrated flag is {calibrated}")
 
 ### Handle errors ---------------------------------------------------------------
 def onVoltageRatioInput3_Error(self, code, description):
