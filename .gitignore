@@ -4,8 +4,11 @@
 *.egg-info
 .vscode
 .ipynb_checkpoints/
-phidget_code_development.ipynb
+
 .sesskey
-phidgetlog.log
+
 __pycache__/
 *.txt
+*.log
+*.ruff_cache
+ruff.toml
