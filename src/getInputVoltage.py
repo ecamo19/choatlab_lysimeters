@@ -69,8 +69,9 @@ def onVoltageRatioChange_0(self, voltageRatio):
     
     if(calibrated):
         
-        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
-        weight_0 = (voltageRatio - offset) * gain
+        # Apply the calibration parameters (gain, offset) to the raw voltage 
+        # ratio
+        weight_0 = (voltageRatio - offset_0) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_0}\n")
 
@@ -84,8 +85,9 @@ def onVoltageRatioInput0_Error(self, code, description):
 def onVoltageRatioChange_1(self, voltageRatio):
     if(calibrated):
         
-        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
-        weight_1 = (voltageRatio - offset) * gain
+        # Apply the calibration parameters (gain, offset) to the raw voltage 
+        # ratio
+        weight_1 = (voltageRatio - offset_1) * gain
         with open(f'../{serial_number}_data/{serial_number}_channel_1_data.txt', 'a') as file:
             file.write(f"{time.strftime('%D %H:%M:%S')}, {weight_1}\n")
 
@@ -99,8 +101,9 @@ def onVoltageRatioInput1_Error(self, code, description):
 def onVoltageRatioChange_2(self, voltageRatio):
     if(calibrated):
         
-        # Apply the calibration parameters (gain, offset) to the raw voltage ratio
-        weight_2 = (voltageRatio - offset) * gain
+        # Apply the calibration parameters (gain, offset) to the raw voltage 
+        # ratio
+        weight_2 = (voltageRatio - offset_2) * gain
         
         # Append data
         with open(f'../{serial_number}_data/{serial_number}_channel_2_data.txt', 'a') as file:
@@ -116,8 +119,9 @@ def onVoltageRatioInput2_Error(self, code, description):
 def onVoltageRatioChange_3(self, voltageRatio):
 		if(calibrated):
 		
-		    # Apply the calibration parameters (gain, offset) to the raw voltage ratio
-		    weight_3 = (voltageRatio - offset) * gain
+		    # Apply the calibration parameters (gain, offset) to the raw voltage 
+      		# ratio
+		    weight_3 = (voltageRatio - offset_3) * gain
 		
 		    # Append data
 		    with open(f'../{serial_number}_data/{serial_number}_channel_3_data.txt', 'a') as file:
