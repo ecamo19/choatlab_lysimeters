@@ -11,12 +11,12 @@ import time
 
 
 ## Get Phidget device serial number ---------------------------------------------
-def getSerialNumber(self):
+def getSerialNumber():
 	"""
 	Get the serial number from the connected phidget. This info is used for
 	naming folders
 	"""
-	bridge_input = self.VoltageRatioInput()
+	bridge_input = VoltageRatioInput()
 
 	try:
 		# Open the device (this will connect to the first available bridge input)
@@ -34,26 +34,3 @@ def getSerialNumber(self):
 		bridge_input.close()
 
 	return serial_number
-
-
-# Method for reading the voltage ------------------------------------------------
-def onVoltageRatioChange(self, voltageRatio):
-	"""
-	Transfrom input voltage to weight in Kilograms. This function uses a
-	linear transformation to calcualte weight with y = mx + b.
-
-	Example:
-	weight = round((m[channel] * voltageRatio) + b[channel], 3)
-	"""
-	# Get channel
-	channel = self.getChannel()
-
-	if calibrated[channel]:
-		# Print in the console
-		# sys.stdout.write("\rWeight: " + str(round((m*voltageRatio)+b,2)) + "g      ")
-
-		# Append the channel id, the time and the estimated weight
-		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
-			file.write(
-				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
-			)
