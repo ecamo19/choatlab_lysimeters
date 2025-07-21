@@ -30,6 +30,10 @@ def onVoltageRatioChange(self, voltageRatio):
 	if calibrated[channel]:
 		# Calculate calibrated weight with y = mx + b
 		# weight = round((m[channel] * voltageRatio) + b[channel], 3)
+
+		# Calculate calibrated weight with y = mx + b
+		# sys.stdout.write("\rWeight: " + str(round((m*voltageRatio)+b,2)) + "g      ")
+
 		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
 			file.write(
 				f'{channel}, {time.strftime("%D %H:%M:%S")},  {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
@@ -54,7 +58,7 @@ if not os.path.exists(f'../{serial_number}_data/{serial_number}_logs'):
 else:
 	print(f'Directory for storing logs already exists.')
 
-# Create txt files for storing data from each channel  --------------------------
+# Create txt file for storing data from each channel  ---------------------------
 with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'w') as file:
 	file.write('channel, date_time, weight_grams\n')
 
@@ -62,6 +66,11 @@ with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'w') as f
 # Main method -------------------------------------------------------------------
 def main_balance():
 	global calibrated, m, b
+
+	# 0) Log errors and warnings
+	Log.enable(
+		LogLevel.PHIDGET_LOG_INFO, f'../{serial_number}_data/{serial_number}_logs/phidget.log'
+	)
 
 	# Create VoltageRatioInput objects for each channel
 	voltage_inputs = {}
