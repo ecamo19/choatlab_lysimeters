@@ -54,50 +54,69 @@ with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'w') as
 # Main method -------------------------------------------------------------------
 def main():
 	global calibrated, m, b
+
 	# Create VoltageRatioInput objects for each channel
 	voltage_inputs = {}
+
 	# Initialize and open all channels
 	for channel in CHANNELS:
 		voltage_inputs[channel] = VoltageRatioInput()
 		voltage_inputs[channel].setOnVoltageRatioChangeHandler(onVoltageRatioChange)
 		voltage_inputs[channel].setChannel(channel)
+
 		try:
 			voltage_inputs[channel].openWaitForAttachment(5000)
+
 			# Set data collection interval to 1s
 			voltage_inputs[channel].setDataInterval(1000)
 			print(f'Channel {channel} attached successfully')
+
 		except PhidgetException as e:
 			print(f'Failed to attach channel {channel}: {e}')
 			continue
+
 	# Calibrate each channel
 	for channel in CHANNELS:
 		if channel not in voltage_inputs:
 			continue
+
 		print(f'\n--- Calibrating Channel {channel} ---')
+
 		try:
 			input(f'Clear the scale on channel {channel} and press Enter\n')
 		except (Exception, KeyboardInterrupt):
 			break
+
 		v1 = voltage_inputs[channel].getVoltageRatio()
+
 		try:
 			w2 = input(
 				f'Place a known weight on channel {channel}, type the weight in grams, and press Enter:\n'
 			)
 		except (Exception, KeyboardInterrupt):
 			break
+
 		v2 = voltage_inputs[channel].getVoltageRatio()
+
 		# Calculate slope 'm'
 		m[channel] = (float(w2) - 0) / (v2 - v1)
+
 		# solve for b using zero point : b = y-mx
 		b[channel] = 0 - (m[channel] * v1)
+
 		print(f'Channel {channel} Calibration Complete: y = {m[channel]}x + {b[channel]}')
+
 		calibrated[channel] = True
+
 	print('\n--- All channels calibrated ---')
 	print('Reading weights from all channels...')
+
 	try:
 		input('Press Enter to Stop\n')
+
 	except (Exception, KeyboardInterrupt):
 		pass
+
 	# Close all channels
 	for channel in CHANNELS:
 		if channel in voltage_inputs:
