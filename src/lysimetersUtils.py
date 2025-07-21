@@ -11,12 +11,12 @@ import time
 
 
 ## Get Phidget device serial number ---------------------------------------------
-def getSerialNumber():
+def getSerialNumber(self):
     """
 	Get the serial number from the connected phidget. This info is used for
 	naming folders
 	"""
-	bridge_input = VoltageRatioInput()
+	bridge_input = self.VoltageRatioInput()
 	try:
 		# Open the device (this will connect to the first available bridge input)
 		# Wait up to 5 seconds for attachment
