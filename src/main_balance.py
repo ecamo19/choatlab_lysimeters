@@ -13,7 +13,7 @@ import time
 import os
 
 ## Call function from getSerialNumber
-from choatlabUtils import *
+from lysimetersUtils import *
 
 # Configuration - specify which channels to use
 # Add or remove channels as needed
@@ -23,6 +23,29 @@ CHANNELS = [0, 1, 2, 3]
 calibrated = {each_channel: False for each_channel in CHANNELS}
 m = {each_channel: 0 for each_channel in CHANNELS}
 b = {each_channel: 0 for each_channel in CHANNELS}
+
+
+# Method for reading the voltage ------------------------------------------------
+def onVoltageRatioChange(self, voltageRatio):
+	"""
+	Transfrom input voltage to weight in Kilograms. This function uses a
+	linear transformation to calcualte weight with y = mx + b.
+
+	Example:
+	weight = round((m[channel] * voltageRatio) + b[channel], 3)
+	"""
+	# Get channel
+	channel = self.getChannel()
+
+	if calibrated[channel]:
+		# Print in the console
+		# sys.stdout.write("\rWeight: " + str(round((m*voltageRatio)+b,2)) + "g      ")
+
+		# Append the channel id, the time and the estimated weight
+		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
+			file.write(
+				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
+			)
 
 
 # Create folder to store data ---------------------------------------------------
