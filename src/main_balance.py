@@ -122,6 +122,7 @@ def main_balance():
 
 		v1 = voltage_inputs[each_channel].getVoltageRatio()
 
+		# Get known weight value
 		try:
 			w2 = input(
 				f'Place a known weight on channel {each_channel}, type the weight in kilograms, and press Enter:\n'
@@ -130,12 +131,13 @@ def main_balance():
 		except (Exception, KeyboardInterrupt):
 			break
 
+			# Get voltage of the known weight
 		v2 = voltage_inputs[each_channel].getVoltageRatio()
 
 		# Calculate slope 'm'
 		m[each_channel] = (float(w2) - 0) / (v2 - v1)
 
-		# solve for b using zero point : b = y-mx
+		# Solve for b using zero point : b = y-mx
 		b[each_channel] = 0 - (m[each_channel] * v1)
 
 		print(
@@ -147,13 +149,14 @@ def main_balance():
 	print('\n--- All channels calibrated ---')
 	print('Reading weights from all channels...')
 
+	# Add try-catch for stop program when Enter is press
 	try:
 		input('Press Enter to Stop\n')
 
 	except (Exception, KeyboardInterrupt):
 		pass
 
-	# Close all channels
+	# 5) Close all close Phidgets once the program is done.
 	for each_channel in CHANNELS:
 		if each_channel in voltage_inputs:
 			voltage_inputs[each_channel].close()
