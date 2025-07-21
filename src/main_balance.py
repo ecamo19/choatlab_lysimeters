@@ -93,6 +93,7 @@ def main():
 			w2 = input(
 				f'Place a known weight on channel {channel}, type the weight in grams, and press Enter:\n'
 			)
+
 		except (Exception, KeyboardInterrupt):
 			break
 
