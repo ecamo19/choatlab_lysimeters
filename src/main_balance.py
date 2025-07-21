@@ -3,7 +3,8 @@ from Phidget22.Devices.VoltageRatioInput import *
 import time
 
 # Configuration - specify which channels to use
-CHANNELS = [0, 1, 2, 3]  # Add or remove channels as needed
+# Add or remove channels as needed
+CHANNELS = [0, 1, 2, 3]  
 
 # Global variables for calibration data
 calibrated = {channel: False for channel in CHANNELS}
