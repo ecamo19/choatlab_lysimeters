@@ -2,6 +2,7 @@
 # https://www.phidgets.com/?prodid=1270#Tab_Code_Samples
 # https://www.phidgets.com/docs/Calibrating_Load_Cells
 # https://www.phidgets.com/docs/KIT4007_User_Guide
+# https://www.phidgets.com/?prodid=1196#Tab_User_Guide
 
 # Load dependecies --------------------------------------------------------------
 from Phidget22.Phidget import *
@@ -26,17 +27,24 @@ b = {each_channel: 0 for each_channel in CHANNELS}
 
 # Method for reading the voltage ------------------------------------------------
 def onVoltageRatioChange(self, voltageRatio):
-	channel = self.getChannel()
-	if calibrated[channel]:
-		# Calculate calibrated weight with y = mx + b
-		# weight = round((m[channel] * voltageRatio) + b[channel], 3)
+	"""
+	Transfrom input voltage to weight in Kilograms. This function uses a
+	linear transformation to calcualte weight with y = mx + b.
 
-		# Calculate calibrated weight with y = mx + b
+	Example:
+	weight = round((m[channel] * voltageRatio) + b[channel], 3)
+	"""
+	# Get channel
+	channel = self.getChannel()
+
+	if calibrated[channel]:
+		# Print in the console
 		# sys.stdout.write("\rWeight: " + str(round((m*voltageRatio)+b,2)) + "g      ")
 
+		# Append the channel id, the time and the estimated weight
 		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
 			file.write(
-				f'{channel}, {time.strftime("%D %H:%M:%S")},  {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
+				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
 			)
 
 
@@ -77,11 +85,18 @@ def main_balance():
 
 	# Initialize and open all channels
 	for each_channel in CHANNELS:
+		# 1) Create your Phidget channels
 		voltage_inputs[each_channel] = VoltageRatioInput()
-		voltage_inputs[each_channel].setOnVoltageRatioChangeHandler(onVoltageRatioChange)
+
+		# 2) Set addressing parameters to specify which channel to open (if any)
 		voltage_inputs[each_channel].setChannel(each_channel)
 
+		# 3) Assign any event handlers you need before calling open so that no
+		# events are missed.
+		voltage_inputs[each_channel].setOnVoltageRatioChangeHandler(onVoltageRatioChange)
+
 		try:
+			# 4) Open your Phidgets and wait 5 seconds for attachment
 			voltage_inputs[each_channel].openWaitForAttachment(5000)
 
 			# Set data collection interval to 1 second
