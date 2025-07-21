@@ -22,7 +22,7 @@ def onVoltageRatioChange(self, voltageRatio):
 	if calibrated[channel]:
 		# Calculate calibrated weight with y = mx + b
 		# weight = round((m[channel] * voltageRatio) + b[channel], 3)
-		with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'a') as file:
+		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
 			file.write(
 				f'{channel}, {time.strftime("%D %H:%M:%S")},  {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
 			)
@@ -47,7 +47,7 @@ else:
 	print(f'Directory for storing logs already exists.')
 
 # Create txt files for storing data from each channel  --------------------------
-with open(f'../{serial_number}_data/{serial_number}_channel_0_data.txt', 'w') as file:
+with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'w') as file:
 	file.write('channel, date_time, weight_grams\n')
 
 
