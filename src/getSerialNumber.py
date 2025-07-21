@@ -29,4 +29,3 @@ def getSerialNumber():
 		bridge_input.close()
 
 	return serial_number
-
