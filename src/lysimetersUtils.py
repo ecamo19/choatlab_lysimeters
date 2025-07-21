@@ -12,6 +12,10 @@ import time
 
 ## Get Phidget device serial number ---------------------------------------------
 def getSerialNumber():
+    """
+	Get the serial number from the connected phidget. This info is used for
+	naming folders
+	"""
 	bridge_input = VoltageRatioInput()
 	try:
 		# Open the device (this will connect to the first available bridge input)
