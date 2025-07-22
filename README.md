@@ -51,8 +51,8 @@ tmux attach
 
 # Quick tmux cheat sheet:
 
-+ Ctrl+B, D - Detach session
-+ tmux ls - List sessions
-+ tmux attach -t sessionname - Reattach
-+ Ctrl+B, C - Create new window in session
-+ Ctrl+B, [ - Scroll mode (use arrow keys, press q to exit)
++ `Ctrl+B`, `D` -> Detach session
++ `tmux ls` -> List sessions
++ `tmux attach -t sessionname` -> Reattach
++ `Ctrl+B`, `C` -> Create new window in session
++ `Ctrl+B`, `[` -> Scroll mode (use arrow keys, press q to exit)
