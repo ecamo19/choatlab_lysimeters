@@ -13,6 +13,7 @@ python = "==3.10.0"
 bash = ">=5.2.37,<6"
 time = ">=1.9,<2"
 ruff = ">=0.12.3,<0.13"
+git = ">=2.49.0,<3"
 
 [pypi-dependencies]
 phidget22 = "*"  
