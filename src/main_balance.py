@@ -52,7 +52,7 @@ def onVoltageRatioChange(self, voltageRatio):
 data_folder_name = f'phidget_{getSerialNumber()}_data'
 
 # Define the path to the new directory
-path = os.path.join(os.path.expanduser("~"), data_folder_name)
+path = os.path.join(os.path.expanduser('~'), data_folder_name)
 
 if not os.path.exists(path):
 	os.mkdir(path)
@@ -79,9 +79,7 @@ def main_balance():
 	global calibrated, m, b
 
 	# 0) Log errors and warnings
-	Log.enable(
-		LogLevel.PHIDGET_LOG_INFO, f'{path}/{data_folder_name}_logs/phidgets.log'
-	)
+	Log.enable(LogLevel.PHIDGET_LOG_INFO, f'{path}/{data_folder_name}_logs/phidgets.log')
 
 	# Create VoltageRatioInput objects for each channel
 	voltage_inputs = {}
