@@ -42,7 +42,7 @@ def onVoltageRatioChange(self, voltageRatio):
 		# sys.stdout.write("\rWeight: " + str(round((m*voltageRatio)+b,2)) + "g      ")
 
 		# Append the channel id, the time and the estimated weight
-		with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
+		with open(f'~/{serial_number}_data/{serial_number}_weights_data.txt', 'a') as file:
 			file.write(
 				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
 			)
@@ -51,23 +51,23 @@ def onVoltageRatioChange(self, voltageRatio):
 # Create folder to store data ---------------------------------------------------
 serial_number = getSerialNumber()
 
-if not os.path.exists(f'../{serial_number}_data'):
-	os.mkdir(f'../{serial_number}_data')
+if not os.path.exists(f'~/{serial_number}_data'):
+	os.mkdir(f'~/{serial_number}_data')
 
-	print(f'Directory {serial_number}_data created')
+	print(f'Directory {serial_number}_data created at:{os.chdir(f'~/{serial_number}_data')} ')
 
 else:
-	print(f'Directory ../{serial_number}_data already exists.')
+	print(f'Directory {serial_number}_data already exists.')
 
 # Create folder to store logs ---------------------------------------------------
-if not os.path.exists(f'../{serial_number}_data/{serial_number}_logs'):
-	os.mkdir(f'../{serial_number}_data/{serial_number}_logs')
+if not os.path.exists(f'~/{serial_number}_data/{serial_number}_logs'):
+	os.mkdir(f'~/{serial_number}_data/{serial_number}_logs')
 
 else:
 	print(f'Directory for storing logs already exists.')
 
 # Create txt file for storing data from each channel  ---------------------------
-with open(f'../{serial_number}_data/{serial_number}_weights_data.txt', 'w') as file:
+with open(f'~/{serial_number}_data/{serial_number}_weights_data.txt', 'w') as file:
 	file.write('channel, date_time, weight_grams\n')
 
 
@@ -77,7 +77,7 @@ def main_balance():
 
 	# 0) Log errors and warnings
 	Log.enable(
-		LogLevel.PHIDGET_LOG_INFO, f'../{serial_number}_data/{serial_number}_logs/phidget.log'
+		LogLevel.PHIDGET_LOG_INFO, f'~/{serial_number}_data/{serial_number}_logs/phidget.log'
 	)
 
 	# Create VoltageRatioInput objects for each channel
