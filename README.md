@@ -25,18 +25,29 @@ pixi shell
 ## 4) Create tmux session
 
 ```bash
-tmux new -s lysimeters
+tmux new -s lysimeter_session
 ```
 
-## 5) Run pixi task
+## 5) Run open pixi shell again and run pixi task
 
 ```bash
+pixi shell
 pixi run balance
 ```
 
 ## 6) Detach tmux session
 
 Press Ctrl-b and then d
+
+## 7) Attach tmux session
+
+```bash
+pixi shell
+
+# Check if the session is running
+tmux ls
+tmux attach
+```
 
 # Quick tmux cheat sheet:
 
