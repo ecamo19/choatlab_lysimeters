@@ -10,7 +10,7 @@ git clone https://github.com/ecamo19/choatlab_lysimeters.git
 cd choatlab_lysimeters
 ```
 
-## 2) Configure the udev run
+## 2) Configure udev rule
 
 ```bash
 bash 1_config_udev_rule.sh
