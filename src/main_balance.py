@@ -11,6 +11,8 @@ from Phidget22.Devices.Log import *
 from Phidget22.LogLevel import *
 import time
 import os
+from pathlib import Path
+import emoji
 
 ## Call function from getSerialNumber
 from lysimetersUtils import *
@@ -34,6 +36,8 @@ def onVoltageRatioChange(self, voltageRatio):
 	Example:
 	weight = round((m[channel] * voltageRatio) + b[channel], 3)
 	"""
+	global serial_number
+
 	# Get channel
 	channel = self.getChannel()
 
@@ -44,12 +48,17 @@ def onVoltageRatioChange(self, voltageRatio):
 		# Append the channel id, the time and the estimated weight
 		with open(f'{path}/{data_folder_name}_weights.txt', 'a') as file:
 			file.write(
-				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
+				f'{serial_number}, {channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
 			)
 
 
 # Create folder to store data ---------------------------------------------------
-data_folder_name = f'phidget_{getSerialNumber()}_data'
+
+# Get phidget device serial number
+serial_number = getSerialNumber()
+
+# Create name for folder
+data_folder_name = f'phidget_{serial_number}_data'
 
 # Define the path to the new directory
 path = os.path.join(os.path.expanduser('~'), data_folder_name)
@@ -57,21 +66,28 @@ path = os.path.join(os.path.expanduser('~'), data_folder_name)
 if not os.path.exists(path):
 	os.mkdir(path)
 
-	print(f'Directory {data_folder_name} created at: {path}')
+	print(emoji.emojize(f'✅ 📁 Directory {data_folder_name} created at: {path}'))
 
 else:
-	print(f'Directory {data_folder_name} already exists.')
+	print(emoji.emojize(f'🔄 📁 Directory {data_folder_name} already exists.'))
 
 # Create folder to store logs ---------------------------------------------------
 if not os.path.exists(f'{path}/{data_folder_name}_logs'):
 	os.mkdir(f'{path}/{data_folder_name}_logs')
 
 else:
-	print(f'Directory for storing logs already exists.')
+	print(emoji.emojize(f'🔄 📁 Directory for storing logs already exists.'))
 
 # Create txt file for storing data from each channel  ---------------------------
-with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
-	file.write('channel, date_time, weight_grams\n')
+
+path_to_data_file = Path(f'{path}/{data_folder_name}_weights.txt')
+
+if not path_to_data_file.exists():
+	print(emoji.emojize('💾 ❌ Weights txt file not found. Creating a new one. \n'))
+	with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
+		file.write('phidget_id, channel, date_time, weight\n')
+else:
+	print(emoji.emojize(f'💾 ✅ Weights txt file found, appending data to {path_to_data_file}. \n'))
 
 
 # Main method -------------------------------------------------------------------
@@ -103,10 +119,10 @@ def main_balance():
 			# Set data collection interval to 1 second
 			voltage_inputs[each_channel].setDataInterval(1000)
 
-			print(f'Channel {each_channel} attached successfully')
+			print(emoji.emojize(f'✅ Channel {each_channel} attached successfully '))
 
 		except PhidgetException as e:
-			print(f'Failed to attach channel {each_channel}: {e}')
+			print(emoji.emojize(f'❌ Failed to attach channel {each_channel}: {e}'))
 			continue
 
 	# Calibrate each channel
@@ -114,10 +130,14 @@ def main_balance():
 		if each_channel not in voltage_inputs:
 			continue
 
-		print(f'\n--- Calibrating Channel {each_channel} ---')
+		print(emoji.emojize(f'\n⚖️  ⚖️  ⚖️  Calibrating Channel {each_channel} ⚖️  ⚖️  ⚖️'))
 
 		try:
-			input(f'Clear the scale on channel {each_channel} and press Enter\n')
+			input(
+				emoji.emojize(
+					f' ‼️ 🚨  Clear the scale on channel {each_channel} and press Enter  🚨‼️\n'
+				)
+			)
 		except (Exception, KeyboardInterrupt):
 			break
 
@@ -126,7 +146,9 @@ def main_balance():
 		# Get known weight value
 		try:
 			w2 = input(
-				f'Place a known weight on channel {each_channel}, type the weight in kilograms, and press Enter:\n'
+				emoji.emojize(
+					f'🪨  Place a known weight on channel {each_channel}, type the weight in kilograms, and press Enter:\n'
+				)
 			)
 
 		except (Exception, KeyboardInterrupt):
@@ -142,17 +164,19 @@ def main_balance():
 		b[each_channel] = 0 - (m[each_channel] * v1)
 
 		print(
-			f'Channel {each_channel} Calibration Complete: y = {m[each_channel]}x + {b[each_channel]}'
+			emoji.emojize(
+				f'✅  Channel {each_channel} Calibration Complete: y = {m[each_channel]}x + {b[each_channel]}'
+			)
 		)
 
 		calibrated[each_channel] = True
 
-	print('\n--- All channels calibrated ---')
-	print('Reading weights from all channels...')
+	print(emoji.emojize('\n⚖️  ⚖️  ⚖️   All channels calibrated  ⚖️  ⚖️  ⚖️'))
+	print(emoji.emojize('✅  Reading weights from all channels...\n'))
 
 	# Add try-catch for stop program when Enter is press
 	try:
-		input('Press Enter to Stop\n')
+		input(emoji.emojize('🛑  Press Enter to Stop  🛑 \n'))
 
 	except (Exception, KeyboardInterrupt):
 		pass
