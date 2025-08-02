@@ -1,4 +1,4 @@
-# Run the choatlab lysimeters code in rasberry pi
+# Run the choatlab lysimeters code on a Raspberry Pi 
 
 ## 1) Flash Raspberry pi image
 
