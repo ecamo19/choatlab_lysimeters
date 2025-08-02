@@ -1,6 +1,52 @@
-# Run the choatlab lysimeters 
+# Run the choatlab lysimeters code in rasberry pi
 
-## 1) Clone repo into the raspberry pi and enter the folder
+## 1) Flash Raspberry pi image
+
+## 2) Configure wifi network on terminal
+
+```bash
+# Find ssid
+nmcli device wifi rescan
+nmcli device wifi list
+```
+
+```bash
+# Log in into Uni Wifi
+
+nmcli connection add type wifi con-name "UniWiFi" ifname wlan0 ssid "Western Wifi" wifi-sec.key-mgmt wpa-eap \ 
+ 802-1x.eap peap \ 
+ 802-1x.phase2-auth mschapv2 \
+ 802-1x.identity "YOUR_USERNAME" \
+ 802-1x.password "YOUR_PASSWORD"
+```
+
+## 3) Install linux dependencies
+
+```bash
+apt update
+apt upgrade
+```
+
+```bash
+# Install git
+apt install git
+```
+
+```bash
+# Install pixi-dev
+curl -fsSL https://pixi.sh/install.sh | sh
+```
+
+```bash
+# Install raspberry connect
+apt install rpi-connect-lite
+```
+```bash
+# Install rclone
+apt install rclone
+```
+
+## 4) Clone repo into the raspberry pi and enter the folder
 
 ```bash
 git clone https://github.com/ecamo19/choatlab_lysimeters.git
@@ -10,36 +56,46 @@ git clone https://github.com/ecamo19/choatlab_lysimeters.git
 cd choatlab_lysimeters
 ```
 
-## 2) Configure udev rule
+## 5) Configure udev rule
 
 ```bash
 bash 1_config_udev_rule.sh
 ```
 
-## 3) Open pixi shell
+## 6) Run lysimeter
+
+### Quick tmux cheatsheet:
+
++ `Ctrl+B`, `D` -> Detach session
++ `tmux ls` -> List sessions
++ `tmux attach -t sessionname` -> Reattach
++ `Ctrl+B`, `C` -> Create new window in session
++ `Ctrl+B`, `[` -> Scroll mode (use arrow keys, press q to exit)
+
+### 6.1) Start pixi shell
 
 ```bash
 pixi shell
 ```
 
-## 4) Create tmux session
+### 6.2) Create tmux session
 
 ```bash
 tmux new -s lysimeter_session
 ```
 
-## 5) Run open pixi shell again and run pixi task
+### 6.3) Run open pixi shell again and run pixi task
 
 ```bash
 pixi shell
 pixi run balance
 ```
 
-## 6) Detach tmux session
+### 6.4) Detach tmux session
 
 Press Ctrl-b and then d
 
-## 7) Attach tmux session
+### 6.5) Attach to tmux session
 
 ```bash
 pixi shell
@@ -49,10 +105,10 @@ tmux ls
 tmux attach
 ```
 
-# Quick tmux cheat sheet:
+## Configure crontab for uploading data to Onedrive
 
-+ `Ctrl+B`, `D` -> Detach session
-+ `tmux ls` -> List sessions
-+ `tmux attach -t sessionname` -> Reattach
-+ `Ctrl+B`, `C` -> Create new window in session
-+ `Ctrl+B`, `[` -> Scroll mode (use arrow keys, press q to exit)
+Follow the instruction outlined in `instructions_for_crontab_config.sh` file
+
+```bash
+cat instructions_for_crontab_config.sh
+```
