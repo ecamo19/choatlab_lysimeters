@@ -12,6 +12,7 @@ from Phidget22.LogLevel import *
 import time
 import os
 from pathlib import Path
+import emoji
 
 ## Call function from getSerialNumber
 from lysimetersUtils import *
@@ -64,8 +65,9 @@ path = os.path.join(os.path.expanduser('~'), data_folder_name)
 
 if not os.path.exists(path):
 	os.mkdir(path)
-
-	print(f'Directory {data_folder_name} created at: {path}')
+	message = emoji.emojize("Hello, Geek! \U0001f44d")
+	print(message)
+	#print(emoji.emojize(f':earth_americas:Directory {data_folder_name} created at: {path}'))
 
 else:
 	print(f'Directory {data_folder_name} already exists.')
