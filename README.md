@@ -45,8 +45,20 @@ apt install rpi-connect-lite
 # Install rclone
 apt install rclone
 ```
+## 4) Configure rpi-connect-lite
 
-## 4) Clone repo into the raspberry pi and enter the folder
+```bash
+raspi-conf
+```
+
+```bash
+rpi-connect on
+rpi-connect signin
+rpi-connect shell on
+loginctl enable-linger
+```
+
+## 5) Clone repo into the raspberry pi and enter the folder
 
 ```bash
 git clone https://github.com/ecamo19/choatlab_lysimeters.git
@@ -56,13 +68,13 @@ git clone https://github.com/ecamo19/choatlab_lysimeters.git
 cd choatlab_lysimeters
 ```
 
-## 5) Configure udev rule
+## 6) Configure udev rule
 
 ```bash
 bash 1_config_udev_rule.sh
 ```
 
-## 6) Run lysimeter
+## 7) Run lysimeter
 
 ### Quick tmux cheatsheet:
 
@@ -72,30 +84,30 @@ bash 1_config_udev_rule.sh
 + `Ctrl+B`, `C` -> Create new window in session
 + `Ctrl+B`, `[` -> Scroll mode (use arrow keys, press q to exit)
 
-### 6.1) Start pixi shell
+### 7.1) Start pixi shell
 
 ```bash
 pixi shell
 ```
 
-### 6.2) Create tmux session
+### 7.2) Create tmux session
 
 ```bash
 tmux new -s lysimeter_session
 ```
 
-### 6.3) Run open pixi shell again and run pixi task
+### 7.3) Run open pixi shell again and run pixi task
 
 ```bash
 pixi shell
 pixi run balance
 ```
 
-### 6.4) Detach tmux session
+### 7.4) Detach tmux session
 
 Press Ctrl-b and then d
 
-### 6.5) Attach to tmux session
+### 7.5) Attach to tmux session
 
 ```bash
 pixi shell
@@ -105,7 +117,7 @@ tmux ls
 tmux attach
 ```
 
-## Configure crontab for uploading data to Onedrive
+## 8) Configure crontab for uploading data to Onedrive
 
 Follow the instruction outlined in `instructions_for_crontab_config.sh` file
 
