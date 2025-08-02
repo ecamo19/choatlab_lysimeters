@@ -34,6 +34,8 @@ def onVoltageRatioChange(self, voltageRatio):
 	Example:
 	weight = round((m[channel] * voltageRatio) + b[channel], 3)
 	"""
+	global serial_number
+
 	# Get channel
 	channel = self.getChannel()
 
@@ -44,12 +46,17 @@ def onVoltageRatioChange(self, voltageRatio):
 		# Append the channel id, the time and the estimated weight
 		with open(f'{path}/{data_folder_name}_weights.txt', 'a') as file:
 			file.write(
-				f'{channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
+				f'{serial_number}, {channel}, {time.strftime("%D %H:%M:%S")}, {round((m[channel] * voltageRatio) + b[channel], 3)}\n'
 			)
 
 
 # Create folder to store data ---------------------------------------------------
-data_folder_name = f'phidget_{getSerialNumber()}_data'
+
+# Get phidget device serial number
+serial_number = getSerialNumber()
+
+# Create name for folder
+data_folder_name = f'phidget_{serial_number}_data'
 
 # Define the path to the new directory
 path = os.path.join(os.path.expanduser('~'), data_folder_name)
@@ -71,7 +78,7 @@ else:
 
 # Create txt file for storing data from each channel  ---------------------------
 with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
-	file.write('channel, date_time, weight_grams\n')
+	file.write('phidget_id, channel, date_time, weight_grams\n')
 
 
 # Main method -------------------------------------------------------------------
