@@ -11,6 +11,7 @@ from Phidget22.Devices.Log import *
 from Phidget22.LogLevel import *
 import time
 import os
+from pathlib import Path
 
 ## Call function from getSerialNumber
 from lysimetersUtils import *
@@ -77,8 +78,15 @@ else:
 	print(f'Directory for storing logs already exists.')
 
 # Create txt file for storing data from each channel  ---------------------------
-with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
-	file.write('phidget_id, channel, date_time, weight\n')
+
+path_to_data_file = Path(f'{path}/{data_folder_name}_weights.txt')
+
+if not path_to_data_file.exists():
+	print('Weights txt file not found. Creating a new one. \n')
+	with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
+		file.write('phidget_id, channel, date_time, weight\n')
+else:
+	print(f'Weights txt file found at {path_to_data_file}. Appending data. \n')
 
 
 # Main method -------------------------------------------------------------------
