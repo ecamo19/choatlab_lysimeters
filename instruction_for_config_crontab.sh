@@ -6,9 +6,13 @@
 
 # chmod +x ~/choatlab_lysimeters/2_upload_lysimeter_data.sh
 
-## 2) Check rclone is working ---------------------------------------------------
+## 2) Configure rclone  ---------------------------------------------------------
 
-#rclone ls onedrive:/ | tail
+# rclone config 
+
+# Check rclone is working
+
+# rclone ls onedrive:/ | tail
 
 ## 3) Configure crontab ---------------------------------------------------------
 
