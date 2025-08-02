@@ -78,7 +78,7 @@ else:
 
 # Create txt file for storing data from each channel  ---------------------------
 with open(f'{path}/{data_folder_name}_weights.txt', 'w') as file:
-	file.write('phidget_id, channel, date_time, weight_grams\n')
+	file.write('phidget_id, channel, date_time, weight\n')
 
 
 # Main method -------------------------------------------------------------------
