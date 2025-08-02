@@ -1,12 +1,16 @@
-# Configure steps for crontab ------------------------------------------------------
+# Configure steps for crontab ---------------------------------------------------
 
 # Web page for figuring out crontab time: https://crontab.guru/ 
 
-## 1) Change the persimission of rclone file ---------------------------------------
+## 1) Change the persimission of rclone file ------------------------------------
 
 # chmod +x ~/choatlab_lysimeters/2_upload_lysimeter_data.sh
-	     
-## 2) Configure crontab ------------------------------------------------------------
+
+## 2) Check rclone is working ---------------------------------------------------
+
+#rclone ls onedrive:/ | tail
+
+## 3) Configure crontab ---------------------------------------------------------
 
 # List current user's cron jobs
 # crontab -l
