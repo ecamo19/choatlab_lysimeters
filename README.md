@@ -56,6 +56,9 @@ rpi-connect on
 rpi-connect signin
 rpi-connect shell on
 loginctl enable-linger
+rpi-connect doctor
+rpi-connect status
+rpi-connect restart
 ```
 
 ## 5) Clone repo into the raspberry pi and enter the folder
