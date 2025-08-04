@@ -122,7 +122,7 @@ tmux attach
 
 ## 8) Configure crontab for uploading data to Onedrive
 
-Follow the instruction outlined in `instructions_for_crontab_config.sh` file
+Follow the instructions outlined in the `instructions_for_crontab_config.sh` file
 
 ```bash
 cat instructions_for_crontab_config.sh
