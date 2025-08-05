@@ -41,10 +41,17 @@ curl -fsSL https://pixi.sh/install.sh | sh
 # Install raspberry connect
 apt install rpi-connect-lite
 ```
+
 ```bash
 # Install rclone
 apt install rclone
 ```
+
+```bash
+# Install 7zip for compressing files
+apt install p7zip
+```
+
 ## 4) Configure rpi-connect-lite
 
 ```bash
