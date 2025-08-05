@@ -7,7 +7,7 @@ SOURCE_FILE="/home/choatlab/phidget_{serial_number}_data/phidget_{serial_number}
 REMOTE_PATH="onedrive:/lysimeters_data/phidget_{serial_number}_data"
 
 # Path to /temp 
-TEMP_FILE="/tmp/data_upload_$(date + %d_%m_%Y_%Hh_%M).txt"
+TEMP_FILE="/tmp/phidget_{serial_number}_data$(date + %d_%m_%Y_%Hh_%M).txt"
 
 # Check if source file exists
 if [[ ! -f "$SOURCE_FILE" ]]; then
