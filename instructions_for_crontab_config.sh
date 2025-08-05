@@ -8,18 +8,24 @@
 
 ## 2) Configure rclone  ---------------------------------------------------------
 
+# Watch the following video if forgotten how...
+# https://www.youtube.com/watch?v=u_W0-HEVOyg
+
 # rclone config 
 
 # Check rclone is working
+# The code should list some files in the OneDrive 
 
 # rclone ls onedrive:/ | tail
 
 ## 3) Configure crontab ---------------------------------------------------------
 
 # List current user's cron jobs
+
 # crontab -l
 
 # Configure crontab
+
 # crontab -e
 
 ## Copy and paste one the following: 
