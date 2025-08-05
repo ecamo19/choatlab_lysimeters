@@ -65,6 +65,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.10-8_cp310.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pyzmq-27.0.1-py310h9a5fd63_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/rclone-1.70.3-h44640fe_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/readline-8.2-h8c095d6_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/ruff-0.12.7-hf9daec2_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/setuptools-80.9.0-pyhff2d567_0.conda
@@ -245,6 +246,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.10-8_cp310.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/pyzmq-27.0.1-py310h7e65305_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/rclone-1.70.3-hf7725c3_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/readline-8.2-h8382b9d_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/ruff-0.12.7-ha8c5b7e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/setuptools-80.9.0-pyhff2d567_0.conda
@@ -418,6 +420,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.10-8_cp310.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/pyzmq-27.0.1-py310h2309745_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-64/rclone-1.70.3-hd32b275_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/readline-8.2-h7cca4af_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/ruff-0.12.7-h6cc4cfe_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/setuptools-80.9.0-pyhff2d567_0.conda
@@ -592,6 +595,7 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python-dateutil-2.9.0.post0-pyhe01879c_2.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.10-8_cp310.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pyzmq-27.0.1-py310h315defb_0.conda
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/rclone-1.70.3-h77c671c_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/readline-8.2-h1d1bf99_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/ruff-0.12.7-h575f11b_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/setuptools-80.9.0-pyhff2d567_0.conda
@@ -5101,6 +5105,60 @@ packages:
   - pkg:pypi/pyzmq?source=hash-mapping
   size: 337693
   timestamp: 1754238176413
+- kind: conda
+  name: rclone
+  version: 1.70.3
+  build: h44640fe_0
+  subdir: linux-64
+  url: https://conda.anaconda.org/conda-forge/linux-64/rclone-1.70.3-h44640fe_0.conda
+  sha256: ed2998de46e485f3d165b0cd0d3d0666e395150054f77131f799f6cadda20422
+  md5: ae4ab0d086a92754341641a7b6f217ec
+  license: MIT
+  license_family: MIT
+  purls: []
+  size: 40350232
+  timestamp: 1752065847554
+- kind: conda
+  name: rclone
+  version: 1.70.3
+  build: h77c671c_0
+  subdir: osx-arm64
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/rclone-1.70.3-h77c671c_0.conda
+  sha256: d962078f78ff92a8bb4a9798f0d6ae115662df4e3049f37aaf44265dcdd29f21
+  md5: 49782f4ac71991e3214c227ddfc7ff78
+  license: MIT
+  license_family: MIT
+  purls: []
+  size: 37037329
+  timestamp: 1752066193173
+- kind: conda
+  name: rclone
+  version: 1.70.3
+  build: hd32b275_0
+  subdir: osx-64
+  url: https://conda.anaconda.org/conda-forge/osx-64/rclone-1.70.3-hd32b275_0.conda
+  sha256: 4ec3df99a7c414b7d11e76215287d4faa4353aac81635bf8caf92f0d536b1227
+  md5: 4427b9932b4165579680593e885c57dd
+  constrains:
+  - __osx>=10.12
+  license: MIT
+  license_family: MIT
+  purls: []
+  size: 39222155
+  timestamp: 1752066392017
+- kind: conda
+  name: rclone
+  version: 1.70.3
+  build: hf7725c3_0
+  subdir: linux-aarch64
+  url: https://conda.anaconda.org/conda-forge/linux-aarch64/rclone-1.70.3-hf7725c3_0.conda
+  sha256: ccc3b23c213f9e76de04267776c149bd16ec8d0a4636dfd7e4fc9f89d05daf1e
+  md5: b6669380aa2ffe90c6f594dcd426e834
+  license: MIT
+  license_family: MIT
+  purls: []
+  size: 37686061
+  timestamp: 1752065834599
 - kind: conda
   name: readline
   version: '8.2'
