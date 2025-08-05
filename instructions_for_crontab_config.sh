@@ -1,5 +1,9 @@
 # Configure steps for crontab ---------------------------------------------------
 
+
+# Watch the following video if forgotten how to configure rclone:
+# https://www.youtube.com/watch?v=u_W0-HEVOyg
+
 # Web page for figuring out crontab time: https://crontab.guru/ 
 
 ## 1) Change the persimission of rclone file ------------------------------------
@@ -11,15 +15,18 @@
 # rclone config 
 
 # Check rclone is working
+# The code should list some files in the OneDrive 
 
 # rclone ls onedrive:/ | tail
 
 ## 3) Configure crontab ---------------------------------------------------------
 
 # List current user's cron jobs
+
 # crontab -l
 
 # Configure crontab
+
 # crontab -e
 
 ## Copy and paste one the following: 

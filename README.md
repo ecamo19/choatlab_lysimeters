@@ -20,16 +20,11 @@ nmcli connection add type wifi con-name "UniWiFi" ifname wlan0 ssid "Western Wif
  802-1x.password "YOUR_PASSWORD"
 ```
 
-## 3) Install linux dependencies
+## 3) Install linux dependencies that are __NOT__ included in pixi 
 
 ```bash
 apt update
 apt upgrade
-```
-
-```bash
-# Install git
-apt install git
 ```
 
 ```bash
@@ -38,13 +33,15 @@ curl -fsSL https://pixi.sh/install.sh | sh
 ```
 
 ```bash
+# Install git
+apt install git
+```
+
+```bash
 # Install raspberry connect
 apt install rpi-connect-lite
 ```
-```bash
-# Install rclone
-apt install rclone
-```
+
 ## 4) Configure rpi-connect-lite
 
 ```bash
@@ -122,7 +119,7 @@ tmux attach
 
 ## 8) Configure crontab for uploading data to Onedrive
 
-Follow the instruction outlined in `instructions_for_crontab_config.sh` file
+Follow the instructions outlined in the `instructions_for_crontab_config.sh` file
 
 ```bash
 cat instructions_for_crontab_config.sh
