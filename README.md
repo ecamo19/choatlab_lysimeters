@@ -20,16 +20,11 @@ nmcli connection add type wifi con-name "UniWiFi" ifname wlan0 ssid "Western Wif
  802-1x.password "YOUR_PASSWORD"
 ```
 
-## 3) Install linux dependencies
+## 3) Install linux dependencies that are __NOT__ included in pixi 
 
 ```bash
 apt update
 apt upgrade
-```
-
-```bash
-# Install git
-apt install git
 ```
 
 ```bash
@@ -38,18 +33,13 @@ curl -fsSL https://pixi.sh/install.sh | sh
 ```
 
 ```bash
+# Install git
+apt install git
+```
+
+```bash
 # Install raspberry connect
 apt install rpi-connect-lite
-```
-
-```bash
-# Install rclone
-apt install rclone
-```
-
-```bash
-# Install 7zip for compressing files
-apt install p7zip
 ```
 
 ## 4) Configure rpi-connect-lite
