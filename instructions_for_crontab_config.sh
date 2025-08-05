@@ -1,5 +1,9 @@
 # Configure steps for crontab ---------------------------------------------------
 
+
+# Watch the following video if forgotten how to configure rclone:
+# https://www.youtube.com/watch?v=u_W0-HEVOyg
+
 # Web page for figuring out crontab time: https://crontab.guru/ 
 
 ## 1) Change the persimission of rclone file ------------------------------------
@@ -7,9 +11,6 @@
 # chmod +x ~/choatlab_lysimeters/2_upload_lysimeter_data.sh
 
 ## 2) Configure rclone  ---------------------------------------------------------
-
-# Watch the following video if forgotten how...
-# https://www.youtube.com/watch?v=u_W0-HEVOyg
 
 # rclone config 
 
