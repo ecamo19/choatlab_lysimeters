@@ -4,7 +4,7 @@ channels = ["conda-forge"]
 description = "This project handles the code for getting weight measurements from the load cells bought from Phidget"
 name = "choatlab_lysimeters"
 platforms = ["linux-64", "osx-arm64", "osx-64", "linux-aarch64"]
-version = "0.2.0"
+version = "0.3.0"
 
 [dependencies]
 bash_kernel = ">=0.7.2,<0.10"
