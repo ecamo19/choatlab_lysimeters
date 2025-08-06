@@ -124,3 +124,14 @@ Follow the instructions outlined in the `instructions_for_crontab_config.sh` fil
 ```bash
 cat instructions_for_crontab_config.sh
 ```
+
+## 9) Check raspberry pi stats
+
+```bash
+# Watch raspberry temp every 2 seconds
+watch -n 2 vcgencmd measure_temp
+```
+
+```bash
+htop
+```
