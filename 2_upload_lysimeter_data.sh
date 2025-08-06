@@ -2,21 +2,21 @@
 
 # 1) Define paths ---------------------------------------------------------------
 
-# Path to the weight data 
-SOURCE_FILE="/home/choatlab/phidget_{serial_number}_data/phidget_{serial_number}_data_weights.txt"
+# 1.1) Path to the weight data 
+SOURCE_FILE="/home/choatlab/phidget_{SERIAL_NUMBER}_data/phidget_{SERIAL_NUMBER}_data_weights.txt"
 
-# Mount OneDrive folder and phidget data 
-REMOTE_PATH="onedrive:/lysimeters_data/phidget_{serial_number}_data"
+# 1.2) Mount OneDrive folder and phidget data 
+REMOTE_PATH="onedrive:/lysimeters_data/phidget_{SERIAL_NUMBER}_data"
 
-# Path to the copied files in /temp 
-TEMP_FILE="/tmp/phidget_{serial_number}_data$(date + %d_%m_%Y_%Hh_%M).txt"
+# 1.3) Path to the copied files in /temp 
+TEMP_FILE="/tmp/phidget_{SERIAL_NUMBER}_data.txt"
 
-# Path to the compressed file
-COMPRESSED_FILE="/tmp/phidget_{serial_number}_data$(date + %d_%m_%Y_%Hh_%M).7z"
+# 1.4) Path to the compressed file
+COMPRESSED_FILE="/tmp/phidget_{SERIAL_NUMBER}_data.7z"
 
 # 2) Check if source file exists ------------------------------------------------
 if [[ ! -f "$SOURCE_FILE" ]]; then
-    echo "$(date + %d_%m_%Y_%Hh_%M): Source file $SOURCE_FILE not found"
+    echo $(date  "+%d_%m_%y_%Hh_%M"): Source file $SOURCE_FILE not found
     exit 1
 fi
 
@@ -29,9 +29,9 @@ cp "$SOURCE_FILE" "$TEMP_FILE"
 
 # 5) Upload the file ------------------------------------------------------------
 if rclone copy "$COMPRESSED_FILE" "$REMOTE_PATH" --verbose; then
-    echo "$(date + %d_%m_%Y_%Hh_%M): Successfully uploaded compressed lysimeter data to OneDrive"
+    echo $(date "+%d_%m_%y_%Hh_%M"): Successfully uploaded compressed lysimeter data to OneDrive
 else
-    echo "$(date + %d_%m_%Y_%Hh_%M): Failed to upload compressed lysimeter to OneDrive"
+    echo $(date "+%d_%m_%y_%Hh_%M"): Failed to upload compressed lysimeter data to OneDrive
 fi
 
 # 6) Clean up temp and compressed file ------------------------------------------
