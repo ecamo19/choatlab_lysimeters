@@ -32,6 +32,12 @@
 # rclone ls onedrive:/ | tail
 ```
 
+# Mount folder
+
+```bash
+#rclone sync ~/phidget_716294_data onedrive:/lysimeters_data
+```
+
 ## 3) Configure crontab ---------------------------------------------------------
 
 # Configure crontab
