@@ -13,6 +13,11 @@
 
 # rclone config 
 
+# Remember to input N on question: 
+ # Use web browser to automatically authenticate rclone with remote?
+ # * Say Y if the machine running rclone has a web browser you can use
+ # * Say N if running rclone on a (remote) machine without web browser access
+
 # Check rclone is working
 # The code should list some files in the OneDrive 
 
