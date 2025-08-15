@@ -1,18 +1,19 @@
-# Run the choatlab lysimeters code on a Raspberry Pi 
+# Configure Raspberry Pi to run choatlab lysimeters code  
 
 ## 1) Flash Raspberry pi image
 
 ## 2) Configure wifi network on terminal
 
+### Find ssid
+
 ```bash
-# Find ssid
 nmcli device wifi rescan
 nmcli device wifi list
 ```
 
-```bash
-# Log in into Uni Wifi
+### Log in into Uni Wifi
 
+```bash
 nmcli connection add type wifi con-name "UniWiFi" ifname wlan0 ssid "Western Wifi" wifi-sec.key-mgmt wpa-eap \ 
  802-1x.eap peap \ 
  802-1x.phase2-auth mschapv2 \
@@ -27,19 +28,22 @@ apt update
 apt upgrade
 ```
 
-```bash
-# Install pixi-dev
-curl -fsSL https://pixi.sh/install.sh | sh
-```
+### Git
 
 ```bash
-# Install git
 apt install git
 ```
 
+### Raspberry connect
+
 ```bash
-# Install raspberry connect
 apt install rpi-connect-lite
+```
+
+### Pixi-dev
+
+```bash
+curl -fsSL https://pixi.sh/install.sh | sh
 ```
 
 ## 4) Configure rpi-connect-lite
@@ -56,6 +60,12 @@ loginctl enable-linger
 rpi-connect doctor
 rpi-connect status
 rpi-connect restart
+```
+
+### rclone
+
+```bash
+apt install rclone
 ```
 
 ## 5) Clone githib repo into the raspberry pi and enter the folder
@@ -127,10 +137,13 @@ cat instructions_for_crontab_config.sh
 
 ## 9) Check raspberry pi stats
 
+### Watch raspberry temp every 2 seconds
+
 ```bash
-# Watch raspberry temp every 2 seconds
 watch -n 2 vcgencmd measure_temp
 ```
+
+### Check memory ram usage
 
 ```bash
 htop
