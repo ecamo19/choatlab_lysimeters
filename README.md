@@ -55,7 +55,7 @@ apt install rclone
 ## 4) Configure rpi-connect-lite
 
 ```bash
-raspi-config
+raspi-config # remember to configure the clock
 ```
 
 ```bash
