@@ -1,6 +1,5 @@
 # Configure steps for crontab ---------------------------------------------------
 
-
 # Watch the following video if forgotten how to configure rclone:
 # https://www.youtube.com/watch?v=u_W0-HEVOyg
 

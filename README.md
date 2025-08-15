@@ -20,7 +20,7 @@ nmcli connection add type wifi con-name "UniWiFi" ifname wlan0 ssid "Western Wif
  802-1x.password "YOUR_PASSWORD"
 ```
 
-## 3) Install linux dependencies that are __NOT__ included in pixi 
+## 3) Install linux dependencies that are _NOT_ included in pixi 
 
 ```bash
 apt update
@@ -58,7 +58,7 @@ rpi-connect status
 rpi-connect restart
 ```
 
-## 5) Clone repo into the raspberry pi and enter the folder
+## 5) Clone githib repo into the raspberry pi and enter the folder
 
 ```bash
 git clone https://github.com/ecamo19/choatlab_lysimeters.git
@@ -68,7 +68,7 @@ git clone https://github.com/ecamo19/choatlab_lysimeters.git
 cd choatlab_lysimeters
 ```
 
-## 6) Configure udev rule
+## 6) Configure udev rule for accessing USB ports
 
 ```bash
 bash 1_config_udev_rule.sh
@@ -96,7 +96,7 @@ pixi shell
 tmux new -s lysimeter_session
 ```
 
-### 7.3) Run open pixi shell again and run pixi task
+### 7.3) Start pixi shell _again_ and run the pixi task
 
 ```bash
 pixi shell
@@ -123,4 +123,15 @@ Follow the instructions outlined in the `instructions_for_crontab_config.sh` fil
 
 ```bash
 cat instructions_for_crontab_config.sh
+```
+
+## 9) Check raspberry pi stats
+
+```bash
+# Watch raspberry temp every 2 seconds
+watch -n 2 vcgencmd measure_temp
+```
+
+```bash
+htop
 ```
