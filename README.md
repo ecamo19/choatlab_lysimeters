@@ -46,6 +46,12 @@ apt install rpi-connect-lite
 curl -fsSL https://pixi.sh/install.sh | sh
 ```
 
+### rclone
+
+```bash
+apt install rclone
+```
+
 ## 4) Configure rpi-connect-lite
 
 ```bash
@@ -60,12 +66,6 @@ loginctl enable-linger
 rpi-connect doctor
 rpi-connect status
 rpi-connect restart
-```
-
-### rclone
-
-```bash
-apt install rclone
 ```
 
 ## 5) Clone githib repo into the raspberry pi and enter the folder
