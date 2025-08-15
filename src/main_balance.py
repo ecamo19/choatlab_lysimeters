@@ -135,7 +135,7 @@ def main_balance():
 		try:
 			input(
 				emoji.emojize(
-					f' ‼️ 🚨  Clear the scale on channel {each_channel} and press Enter  🚨‼️\n'
+					f' ‼️ 🚨  Clear the scale on channel {each_channel} and press Enter  🚨 ‼️\n'
 				)
 			)
 		except (Exception, KeyboardInterrupt):
