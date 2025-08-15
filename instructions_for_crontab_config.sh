@@ -45,16 +45,16 @@
 ## Remember to edit the 2_upload_lysimeter_data.sh with the correct phidget 
 
 # Run upload code every minute
-# * * * * * /home/choatlab/choatlab_lysimiters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
+# * * * * * /home/choatlab/choatlab_lysimeters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
 
 # Run upload code every 5 minutes
-# */5 * * * * /home/choatlab/choatlab_lysimiters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1 
+# */5 * * * * /home/choatlab/choatlab_lysimeters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1 
 
 # Run upload code every hour
-# 0 * * * * /home/choatlab/choatlab_lysimiters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
+# 0 * * * * /home/choatlab/choatlab_lysimeters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
 
 # Run upload code every day at midnight 
-# 0 0 * * * /home/choatlab/choatlab_lysimiters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
+# 0 0 * * * /home/choatlab/choatlab_lysimeters/2_upload_lysimeter_data.sh >> /home/choatlab/upload.log 2>&1
 
 # List current user's cron jobs
 
